@@ -6,51 +6,56 @@
 #    By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/09 15:14:49 by crenly-b          #+#    #+#              #
-#    Updated: 2019/08/25 14:27:52 by crenly-b         ###   ########.fr        #
+#    Updated: 2019/09/02 14:27:51 by crenly-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-INC_PATH = includes/
-INC = $(addprefix -I, $(INC_PATH))
+HEADERS = $(addprefix -I , includes/)
 FLAGS = -Wall -Wextra -Werror
-SRC = find_ch.c ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
-	ft_isdigit.c ft_isprint.c ft_itoa.c ft_memalloc.c ft_memccpy.c ft_memdel.c \
-	ft_memmove.c ft_memset.c ft_putchar_fd.c ft_putchar.c ft_putendl_fd.c \
-	ft_putendl.c ft_putnbr_fd.c ft_putnbr.c ft_putstr_fd.c ft_putstr.c \
-	ft_strcat.c ft_strchr.c ft_strclr.c ft_strcmp.c ft_strcpy.c ft_strdel.c \
-	ft_strdup.c ft_strequ.c ft_striter.c ft_striteri.c ft_strjoin.c \
-	ft_strlcat.c ft_strlen.c ft_strmap.c ft_strmapi.c ft_strncat.c ft_strncmp.c \
-	ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c ft_strrchr.c \
-	ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c \
-	length_int.c super_check.c ft_memcpy.c ft_memchr.c ft_memcmp.c get_next_line.c\
-	ft_str2del.c
 
-OBJ = $(SRC:.c=.o)
-OBJ_PATH = objects/
+LIST_LIBFT = find_ch ft_atoi ft_bzero ft_isalnum ft_isalpha ft_isascii \
+	ft_isdigit ft_isprint ft_itoa ft_memalloc ft_memccpy ft_memdel \
+	ft_memmove ft_memset ft_putchar_fd ft_putchar ft_putendl_fd \
+	ft_putendl ft_putnbr_fd ft_putnbr ft_putstr_fd ft_putstr \
+	ft_strcat ft_strchr ft_strclr ft_strcmp ft_strcpy ft_strdel \
+	ft_strdup ft_strequ ft_striter ft_striteri ft_strjoin \
+	ft_strlcat ft_strlen ft_strmap ft_strmapi ft_strncat ft_strncmp \
+	ft_strncpy ft_strnequ ft_strnew ft_strnstr ft_strrchr \
+	ft_strsplit ft_strstr ft_strsub ft_strtrim ft_tolower ft_toupper \
+	length_int super_check ft_memcpy ft_memchr ft_memcmp get_next_line\
+	ft_str2del ft_lstadd ft_lstnew ft_lstdelone ft_lstdel ft_lstiter \
+	ft_lstmap \
 
-.PHONY: all clean fclean re move movedel
+LIST_PRINTF = ft_atoi_printf ft_convert1016 ft_convertdigits ft_convertoctal \
+	ft_convertunsi ft_dexeptions ft_dznak ft_fexepbig ft_memory \
+	ft_printf ft_recconver ft_record1 ft_record2 ft_supfun1 \
+	ft_supfun1f ft_supfun2 ft_supfun2f ft_supprint1d ft_supprint1f \
+	ft_supprint1o ft_supprint1s ft_supprint1x ft_supprint2d \
+	ft_supprint2f ft_supprint2s ft_supprint2x ft_supprint3d \
+	ft_supprint3f ft_supprint4d ft_supprint4f ft_supprint5f \
+	ft_supprintadr ft_supprintox ft_uexeption \
+
+
+OBJ_LIBFT = $(addprefix obj/, $(addsuffix .o, $(LIST_LIBFT)))
+OBF_PRINTF = $(addprefix obj/, $(addsuffix .o, $(LIST_PRINTF)))
+
+.PHONY: all clean fclean re obj
 
 all: $(NAME)
 
-%.o:%.c
-	@gcc $(FLAGS) -o $@ -c $< $(INC)
+obj/%.o: src/%.c
+	gcc $(FLAGS) -o $@ -c $< $(HEADERS)
 
-$(NAME): $(OBJ)
-	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
-	@echo ✅libft compiled!
+$(NAME): obj $(OBJ_LIBFT) $(OBF_PRINTF)
+	@ar -rc $(NAME) $(OBJ_LIBFT) $(OBF_PRINTF)
+	@echo 📖libft compiled!
 
-
-move:
-	mkdir $(OBJ_PATH) 2> /dev/null || true
-	mv $(OBJ) $(OBJ_PATH)
-
-movedel:
-	@rm -rf $(OBJ_PATH)
+obj:
+	@mkdir obj  2> /dev/null || true
 
 clean:
-	@rm -f $(OBJ)
+	@rm -rf ./obj/
 
 fclean: clean
 	@rm -f $(NAME)

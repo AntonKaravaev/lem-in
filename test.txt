@@ -1,7 +1,4 @@
-Surballe! - алгоритм для Ленин	
-
-1
-#Here is the number of lines required: 31
+3
 ##start
 Mek2 1 1
 ##end

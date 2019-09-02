@@ -6,7 +6,7 @@
 #    By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/25 01:00:32 by crenly-b          #+#    #+#              #
-#    Updated: 2019/08/28 15:43:11 by crenly-b         ###   ########.fr        #
+#    Updated: 2019/09/02 14:29:42 by crenly-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,21 +23,17 @@ OBJS = $(addprefix objs/, $(addsuffix .o, $(LIST)))
 all: $(NAME)
 
 objs/%.o: srcs/%.c
-		@echo
-		@echo 🇷🇺 🇷🇺 🇷🇺 🇷🇺 🇷🇺 🇷🇺 🇷🇺 🇷🇺 🇷🇺
-		@echo Recompiled these files:
 		gcc $(FLAGS) -c $< -o $@ $(HEADER)
 
-$(NAME): objs $(OBJS)
-		@echo "-----------------------";
-		@make -C libft
+$(NAME): objs make_lib $(OBJS) libft/libft.a
 		@gcc -o $(NAME) $(OBJS) $(LIB)
 		@echo ✅lem-in compiled!
-		@echo "-----------------------";
-		@echo
+
+make_lib:
+	@make -C libft
 
 objs:
-		@mkdir objs
+		@mkdir objs 2> /dev/null || true
 
 clean:
 		@make -C libft/ clean
