@@ -6,13 +6,13 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 21:29:58 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/07/14 15:35:49 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/03 14:37:14 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_strdel(char **as)
+void	ft_strdelp(char **as)
 {
 	if (!as || !(*as))
 		return ;
@@ -43,10 +43,10 @@ char	*ft_strdup(const char *s)
 void	ft_reworkbuf(t_spec *s)
 {
 	if (s->buf)
-		ft_strdel(&s->buf);
+		ft_strdelp(&s->buf);
 	if (!(s->buf = (char *)malloc(sizeof(char) * 10001)))
 		exit(-1);
-	ft_bzero(s->buf, 10001);
+	ft_bzerop(s->buf, 10001);
 }
 
 void	ft_newstruct(t_spec *s)
@@ -69,5 +69,5 @@ void	ft_newstruct(t_spec *s)
 	s->strl_p = 0;
 	if (!(s->buf = (char *)malloc(sizeof(char) * 10001)))
 		exit(-1);
-	ft_bzero(s->buf, 10001);
+	ft_bzerop(s->buf, 10001);
 }

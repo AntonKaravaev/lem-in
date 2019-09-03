@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:55:33 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/02 21:38:07 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/03 14:06:03 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ typedef struct	s_map
 
 int				main(int argc, char *argv[]);
 void			ft_validation(t_list *rooms, t_map *map);
+int				ft_atoilemin(const char *s);
 
 #endif

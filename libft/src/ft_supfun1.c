@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 21:28:26 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/07/14 15:30:54 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/03 14:36:38 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		ft_strlen(char *str)
 	return (i);
 }
 
-void	ft_bzero(void *s, size_t size)
+void	ft_bzerop(void *s, size_t size)
 {
 	size_t	i;
 	char	*str;

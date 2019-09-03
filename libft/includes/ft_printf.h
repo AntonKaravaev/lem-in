@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 11:50:19 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/07/14 18:26:52 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/03 14:38:41 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,8 +215,8 @@ void			ft_easyflag(char *str, t_spec *s, int j);
 void			*extend_buf(t_ran *ran);
 void			ft_putchar(char c);
 void			ft_putstr(char *str, t_ran ran, int *i);
-void			ft_bzero(void *s, size_t size);
-void			ft_strdel(char **as);
+void			ft_bzerop(void *s, size_t size);
+void			ft_strdelp(char **as);
 void			ft_reworkbuf(t_spec *s);
 
 #endif

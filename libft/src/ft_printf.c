@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 19:50:48 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/07/14 18:00:54 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/03 14:39:32 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,14 @@ void	ft_start(char *str, va_list *vl, t_ran *ran)
 		{
 			if (ran->ret == 1)
 			{
-				ft_strdel(&s.buf);
+				ft_strdelp(&s.buf);
 				return ;
 			}
 			ran->i++;
 			ft_recconver(str, ran, vl, &s);
 			ran->i++;
 		}
-		ft_strdel(&s.buf);
+		ft_strdelp(&s.buf);
 	}
 }
 
@@ -100,11 +100,11 @@ int		ft_printf(const char *restrict str, ...)
 	va_start(vl, str);
 	if (!(ran.buf = (char *)malloc(sizeof(char) * ran.bs)))
 		return (-1);
-	ft_bzero(ran.buf, ran.bs);
+	ft_bzerop(ran.buf, ran.bs);
 	ft_start((char *)str, &vl, &ran);
 	ft_putstr(ran.buf, ran, &ran.strlen);
 	length = ran.strlen;
-	ft_strdel(&ran.buf);
+	ft_strdelp(&ran.buf);
 	va_end(vl);
 	return (length);
 }
