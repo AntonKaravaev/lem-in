@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 19:50:48 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/03 14:39:32 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/04 12:36:57 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int		ft_printf(const char *restrict str, ...)
 		return (-1);
 	ft_bzerop(ran.buf, ran.bs);
 	ft_start((char *)str, &vl, &ran);
-	ft_putstr(ran.buf, ran, &ran.strlen);
+	ft_putstrp(ran.buf, ran, &ran.strlen);
 	length = ran.strlen;
 	ft_strdelp(&ran.buf);
 	va_end(vl);

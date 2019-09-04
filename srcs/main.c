@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:53:48 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/03 14:02:57 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/04 18:13:54 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@
 
 static void		ft_mapinitial(t_map *map)
 {
+	map->rooms = NULL;
 	map->edge_table= NULL;
+	map->str = NULL;
 	map->q_rooms = 0;
 	map->ants = 0;
 	map->s = 0;
@@ -40,15 +42,15 @@ static void		ft_mapinitial(t_map *map)
 
 int				main(int argc, char *argv[])
 {
-	t_list		rooms;
+	//t_list		rooms;
 	t_map		map;
 
 	(void)argc;
 	(void)argv;
-	(void)rooms;
+	//(void)rooms;
 	ft_mapinitial(&map);
 //	ft_roominitial(&rooms);
-	ft_validation(&rooms, &map);
+	ft_validation(&map);
 
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:55:33 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/03 14:06:03 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/04 19:20:50 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ typedef struct	s_room
 
 typedef struct	s_map
 {
+	t_list	*rooms;
 	int		**edge_table;
+	char	**str;
 	int		q_rooms; // quantity of rooms
 	int		ants;
 	int		s; // start
@@ -35,8 +37,11 @@ typedef struct	s_map
 	int		max_y;
 }				t_map;
 
-int				main(int argc, char *argv[]);
-void			ft_validation(t_list *rooms, t_map *map);
-int				ft_atoilemin(const char *s);
+int			main(int argc, char *argv[]);
+void		ft_validation(t_map *map);
+int			ft_atoilemin(const char *s);
+void		ft_atoicoor(const char *s);
+void		ft_find_start_room(char **line, t_map *map);
+void		ft_find_room(char **line, t_map *map);
 
 #endif

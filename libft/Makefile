@@ -6,7 +6,7 @@
 #    By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/09 15:14:49 by crenly-b          #+#    #+#              #
-#    Updated: 2019/09/02 14:27:51 by crenly-b         ###   ########.fr        #
+#    Updated: 2019/09/04 12:39:32 by crenly-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ LIST_PRINTF = ft_atoi_printf ft_convert1016 ft_convertdigits ft_convertoctal \
 
 
 OBJ_LIBFT = $(addprefix obj/, $(addsuffix .o, $(LIST_LIBFT)))
-OBF_PRINTF = $(addprefix obj/, $(addsuffix .o, $(LIST_PRINTF)))
+OBJ_PRINTF = $(addprefix obj/, $(addsuffix .o, $(LIST_PRINTF)))
 
 .PHONY: all clean fclean re obj
 
@@ -47,8 +47,8 @@ all: $(NAME)
 obj/%.o: src/%.c
 	gcc $(FLAGS) -o $@ -c $< $(HEADERS)
 
-$(NAME): obj $(OBJ_LIBFT) $(OBF_PRINTF)
-	@ar -rc $(NAME) $(OBJ_LIBFT) $(OBF_PRINTF)
+$(NAME): obj $(OBJ_LIBFT) $(OBJ_PRINTF)
+	@ar -rc $(NAME) $(OBJ_LIBFT) $(OBJ_PRINTF)
 	@echo 📖libft compiled!
 
 obj:

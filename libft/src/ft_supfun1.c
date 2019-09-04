@@ -6,18 +6,13 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 21:28:26 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/03 14:36:38 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/04 12:44:15 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	ft_putstr(char *str, t_ran ran, int *j)
+void		ft_putstrp(char *str, t_ran ran, int *j)
 {
 	int	i;
 
@@ -35,16 +30,6 @@ void	ft_putstr(char *str, t_ran ran, int *j)
 		i++;
 		*j = i;
 	}
-}
-
-int		ft_strlen(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
 }
 
 void	ft_bzerop(void *s, size_t size)

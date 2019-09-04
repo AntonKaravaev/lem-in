@@ -6,7 +6,7 @@
 #    By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/25 01:00:32 by crenly-b          #+#    #+#              #
-#    Updated: 2019/09/03 13:54:15 by crenly-b         ###   ########.fr        #
+#    Updated: 2019/09/04 19:41:35 by crenly-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FLAGS = -Wall -Wextra -Werror
 HEADER = -I includes -I libft/includes
 LIB		= -L libft/ -lft
 
-LIST = main validation ft_atoilemin\
+LIST = main validation ft_atoilemin roomsfinder\
 
 OBJS = $(addprefix objs/, $(addsuffix .o, $(LIST)))
 
