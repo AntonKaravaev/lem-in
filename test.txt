@@ -1,7 +1,11 @@
 5
 ##start
-qqq    1 2
+qqq 1 2
 #hell0
 ##end
-q2    3 4
-123   15 23
+q2    2 2
+eeee   500 200
+He2y 0 0
+He4y 40 4
+He22y 1 1
+zzz-qqq

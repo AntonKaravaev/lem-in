@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 22:12:35 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/08/25 03:29:07 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/05 21:37:28 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static char		**get_words(char **fresh_str, char const *s, char c)
 		i++;
 	}
 	fresh_str[w] = NULL;
+	ft_strdel(&fresh_word);
 	return (fresh_str);
 }
 

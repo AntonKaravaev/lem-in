@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 21:29:58 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/03 14:37:14 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/05 15:52:25 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_strdelp(char **as)
 	*as = NULL;
 }
 
-char	*ft_strdup(const char *s)
+char	*ft_strduppr(const char *s)
 {
 	char	*str;
 	int		len;

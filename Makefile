@@ -6,17 +6,17 @@
 #    By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/25 01:00:32 by crenly-b          #+#    #+#              #
-#    Updated: 2019/09/04 19:41:35 by crenly-b         ###   ########.fr        #
+#    Updated: 2019/09/05 21:50:40 by crenly-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = lem-in
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 HEADER = -I includes -I libft/includes
 LIB		= -L libft/ -lft
 
-LIST = main validation ft_atoilemin roomsfinder\
+LIST = main validation ft_atoilemin roomsfinder ft_validation_errors savelinks \
 
 OBJS = $(addprefix objs/, $(addsuffix .o, $(LIST)))
 

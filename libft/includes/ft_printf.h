@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 11:50:19 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/04 12:43:51 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/05 15:53:13 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,7 +208,7 @@ int				ft_biggeraccornum(t_spec *s);
 int				ft_strlen(char *str);
 void			ft_newstruct(t_spec *s);
 void			ft_findflags(char *str, t_ran *ran, t_spec *s);
-char			*ft_strdup(const char *s);
+char			*ft_strduppr(const char *s);
 int				ft_atoi(const char *str);
 void			ft_strjcpy(char *dest, t_spec *s, int *j);
 void			ft_easyflag(char *str, t_spec *s, int j);
