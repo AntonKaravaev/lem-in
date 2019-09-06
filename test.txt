@@ -1,11 +1,14 @@
-5
+890
 ##start
-qqq 1 2
+name0 1 4
 #hell0
 ##end
-q2    2 2
-eeee   500 200
-He2y 0 0
-He4y 40 4
-He22y 1 1
-zzz-qqq
+name1    2 2
+name2 0 0
+name3 40 4
+name4  1 1
+name5   500 200
+name0-name3
+name2-name0
+name4-name1
+name5-name3

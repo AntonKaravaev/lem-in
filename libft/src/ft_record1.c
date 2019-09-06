@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 15:54:21 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/05 15:54:28 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/06 13:38:25 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_s_record(t_ran *ran, va_list *vl, t_spec *s)
 {
 	char *str;
 
+	str = NULL;;
 	ft_strdelp(&s->buf);
 	str = (va_arg(*vl, char*));
 	if (str == '\0')

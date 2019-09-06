@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 16:04:02 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/05 21:32:27 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/06 15:16:25 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,35 +45,32 @@ static void		ft_find_amount_of_ants(char **line , t_map *map)
 
 	str = NULL;
 	str = ft_strsplit(*line, ' ');
-	if (str[1] != NULL)
+	if (!str || str[0] == NULL || str[1] != NULL)
 		ft_lem_error("INPUT ERROR(ants) = \0", line);
 	else
 	{
 		map->ants = ft_atoilemin(str[0]);
-		ft_strdel(str);
+		ft_printf("map->ants = %d\n", map->ants);
+		ft_str2del(&str);
 	}
 }
 
 static void		ft_save_inf(char **line, t_map *map)
 {
-	if (map->ants == 0)
+	if (map->ants == 0 && map->s == 0 && map->e == 0)
 		ft_find_amount_of_ants(line, map);
-	else if (map->s == 0)
-		ft_lem_error("INPUT ERROR(ants) = \0", line);
-	else if (map->e == 0 && map->rooms == NULL)
+	else if (map->ants != 0 && map->s == 1 && map->e == 0 && map->sf == 0)
 		ft_find_start_room(line, map);
-	else if (map->e == 0 && map->rooms != NULL)
-		ft_lem_error("INPUT ERROR(start room) = \0", line);
-	else if (map->ef == 0)
+	else if (map->ants != 0 && map->s == 1 && map->e == 1 && map->sf == 1 && map->ef == 0)
 		ft_find_curr_room(line, map);
-	else if (map->ef == 1 && map->lf == 0)
+	else if (map->ants != 0 && map->s == 1 && map->e == 1 && map->sf == 1 && map->ef == 1 && map->lf == 0)
 	{
 		if (ft_strchr(*line, 45) == NULL)
 			ft_find_curr_room(line, map);
 		else
 			ft_savelinks(line, map);
 	}
-	else if (map->lf == 1)
+	else if (map->ants != 0 && map->s == 1 && map->e == 1 && map->sf == 1 && map->ef == 1 && map->lf == 1)
 		ft_savelinks(line, map);
 	else
 		ft_lem_error("INPUT ERROR = \0", line);
@@ -95,12 +92,14 @@ void 			ft_validation(t_map *map)
 {
 	char	*line;
 	int		gnl_number;
+	int		fd;
 
+	fd = open("test.txt", O_RDONLY);
 	line = NULL;
 	gnl_number = 0;
 	while (1)
 	{
-		if ((gnl_number = get_next_line(0, &line)) < 0)
+		if ((gnl_number = get_next_line(fd, &line)) < 0)
 			ft_lem_error("READ ERROR(GNL) = \0", &line);
 		else if (gnl_number == 0) // написать функцию проверка корректности если конец файла
 			break;

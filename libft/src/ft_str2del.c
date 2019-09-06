@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 02:27:52 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/07/26 02:28:08 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/06 14:18:11 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void			ft_str2del(char ***str)
 	int i;
 
 	i = 0;
-	if (*str != NULL)
+	if (*str && **str != NULL)
 	{
 		while ((*str)[i] != NULL)
 		{

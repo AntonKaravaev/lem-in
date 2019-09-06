@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:53:48 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/05 21:45:21 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/06 17:24:38 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ static void		ft_mapinitial(t_map *map)
 	map->s = 0;
 	map->e = 0;
 	map->lf = 0;
+	map->sf = 0;
 	map->ef = 0;
+	map->temp_x = 0;
+	map->temp_y = 0;
 	map->max_x = 0;
 	map->max_y = 0;
 }

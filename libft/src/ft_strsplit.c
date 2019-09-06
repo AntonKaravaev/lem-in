@@ -6,71 +6,72 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 22:12:35 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/05 21:37:28 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/06 14:31:32 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_countwords(char const *s, char c)
+static int		ft_parts_nr(char const *s, char c)
 {
-	int words;
-	int flag;
-	int	i;
+	int i;
+	int cnt;
+	int	part;
 
-	words = 0;
-	flag = 1;
 	i = 0;
-	while (s[i] != '\0')
+	cnt = 0;
+	part = 0;
+	while (s[i])
 	{
-		if (s[i] == c)
-			flag = 1;
-		else if (flag == 1)
+		if (s[i] == c && part == 1)
+			part = 0;
+		if (s[i] != c && part == 0)
 		{
-			words++;
-			flag = 0;
+			part = 1;
+			cnt++;
 		}
 		i++;
 	}
-	return (words);
+	return (cnt);
 }
 
-static char		**get_words(char **fresh_str, char const *s, char c)
+static int		ft_part_len(char const *s, char c, int i)
 {
-	int		i;
-	int		j;
-	int		w;
-	char	*fresh_word;
+	int len;
 
-	i = 0;
-	w = 0;
-	while (s[i] != '\0')
+	len = 0;
+	while (s[i] && s[i] != c)
 	{
-		if (s[i] != c)
-		{
-			j = i;
-			while (s[i] != c && s[i] != '\0')
-				i++;
-			fresh_word = ft_strsub(s, j, i - j);
-			fresh_str[w++] = fresh_word;
-			i--;
-		}
+		len++;
 		i++;
 	}
-	fresh_str[w] = NULL;
-	ft_strdel(&fresh_word);
-	return (fresh_str);
+	return (len);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
-	char	**fresh_str;
-	int		words;
+	char	**map;
+	int		i;
+	int		j;
+	int		parts;
 
-	if (!s)
+	if (s == NULL)
 		return (NULL);
-	words = ft_countwords(s, c);
-	if (!(fresh_str = (char **)malloc(sizeof(char *) * (words + 1))))
+	parts = ft_parts_nr(s, c);
+	if (!(map = (char**)malloc(sizeof(*map) * (parts + 1))))
 		return (NULL);
-	return (get_words(fresh_str, s, c));
+	i = 0;
+	j = 0;
+	map[0] = NULL;
+	while (parts > 0)
+	{
+		while (s[i] == c && s[i] != '\0')
+			i++;
+		map[j] = ft_strsub(s, i, ft_part_len(s, c, i));
+		j++;
+		i = i + ft_part_len(s, c, i);
+		parts--;
+	}
+	map[j] = 0;
+	return (map);
 }

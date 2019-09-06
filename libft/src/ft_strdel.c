@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 22:12:15 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/05 21:39:53 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/06 13:12:58 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_strdel(char **as)
 {
-	if (!as || !(*as))
+	if (!as || !*as)
 		return ;
 	free(*as);
 	*as = NULL;

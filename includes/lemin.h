@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:55:33 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/05 21:48:47 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/06 17:03:28 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ typedef struct	s_map
 	int		s; // start
 	int		e; // end
 	int		lf; // ants in a start room
+	int		sf;
 	int		ef; // ants in an end room
+	int		temp_x;
+	int		temp_y;
 	int		max_x;
 	int		max_y;
 }				t_map;
