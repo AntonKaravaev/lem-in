@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:53:48 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/06 17:24:38 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/07 17:26:50 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void		ft_mapinitial(t_map *map)
 	map->temp_y = 0;
 	map->max_x = 0;
 	map->max_y = 0;
+
 }
 
 int				main(int argc, char *argv[])
@@ -39,6 +40,7 @@ int				main(int argc, char *argv[])
 	(void)argv;
 	ft_mapinitial(&map);
 	ft_validation(&map);
+	ft_solution(&map);
 	exit (-1);
 	return (0);
 }

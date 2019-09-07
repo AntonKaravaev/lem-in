@@ -1,14 +1,15 @@
-890
+4
 ##start
 name0 1 4
 #hell0
 ##end
 name1    2 2
 name2 0 0
-name3 40 4
+name3 3 4
 name4  1 1
-name5   500 200
+name5   5 0
 name0-name3
 name2-name0
 name4-name1
 name5-name3
+name0-name1

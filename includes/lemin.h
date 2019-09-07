@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:55:33 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/06 17:03:28 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/07 17:31:21 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void		ft_find_start_room(char **line, t_map *map);
 void		ft_find_end_room(char **line, t_map *map);
 void		ft_find_curr_room(char **line, t_map *map);
 void		ft_savelinks(char **line, t_map *map);
+void		ft_solution(t_map *map);
 void		ft_lem_error(const char *err, char **line);
 void		ft_linkserror();
 

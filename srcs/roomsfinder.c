@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 14:46:02 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/06 17:24:30 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/07 18:03:11 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void		ft_new_roominitial(t_map *map)
 	new->name = ft_strdup(map->str[0]);
 	new->x = ft_atoi(map->str[1]);
 	new->y = ft_atoi(map->str[2]);
+	map->max_x = (new->x >= map->max_x) ? new->x : map->max_x;
+	map->max_y = (new->y >= map->max_y) ? new->y : map->max_y;
 	new->pos = ++map->q_rooms - 1;
 	map->new_room = new;
 	new = NULL;
