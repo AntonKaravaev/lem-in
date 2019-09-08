@@ -6,21 +6,134 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:06:44 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/07 20:29:32 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/08 18:47:07 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-void	ft_easy_bfs(t_map *map)
+static void ft_create_str_ways(t_map *map)
 {
-	int str[map->q_rooms];
 	int i;
+//	int j;
 
 	i = 0;
-	while (i < map->q_rooms)
-		str[i++] = -1;
+	if (!(map->ways = (int **)malloc(sizeof(int *) * map->q_rooms)))
+		exit(-1);
+}
 
+static void ft_create_way_line(t_map *map, int i, int quantity)
+{
+	int j;
+	int z;
+
+	j = 0;
+	z = 0;
+	if (!(map->ways[i] = (int *)malloc(sizeof(int) * (quantity + 1))))
+		exit(-1);
+	while (map->temp_line[j] != -1)
+		map->ways[i][z++] = map->temp_line[j++];
+	j = 0;
+	map->ways[i][z] = -1;
+	while (map->temp_line[j] != -1 && j < map->q_rooms)
+		map->temp_line[j++] = -1;
+}
+
+static int		ft_check_renumber(t_map *map, int i, int number)
+{
+	int j;
+
+	j = 0;
+	while (j < map->q_rooms && map->temp_line[j] != -1 && j < i)
+	{
+		ft_printf("map->temp_line[%d] = %d, *number = %d\n", j, map->temp_line[j], number);
+		if (map->temp_line[j] == number)
+			return (0);
+		j++;
+	}
+	return (1);
+}
+
+void		ft_create_temp_line(t_map *map)
+{
+	int i;
+
+	i = -1;
+	if (!(map->temp_line = (int *)malloc(sizeof(int) * map->q_rooms)))
+	 		exit(-1);
+	while (++i < map->q_rooms)
+		map->temp_line[i] = -1;
+}
+
+int		ft_how_much_for_one_line(t_map *map, int i)
+{
+	int j;
+	int z;
+
+	j = -1;
+	z = 0;
+	while (++j < map->q_rooms)
+	{
+		if (map->edge_table[i][j] == 1 && i == 1)
+		{
+			map->temp_line[z] = j;
+			z++;
+		}
+		else if (map->edge_table[i][j] == 1)
+		{
+			if (ft_check_renumber(map, z , j) == 1)
+			{
+				map->temp_line[z] = j;
+				z++;
+			}
+		}
+	}
+	ft_printf("z = %d\n", z);
+	return (z);
+}
+
+void	ft_easy_bfs(t_map *map)
+{
+	int i;
+	int j;
+	int z;
+
+	i = 0;
+	j = -1;
+	z = -1;
+	ft_create_str_ways(map);
+	ft_create_temp_line(map);
+	ft_create_way_line(map, 0, ft_how_much_for_one_line(map, 1));
+	ft_create_way_line(map, 1, ft_how_much_for_one_line(map, map->ways[0][0]));
+	//printf("map->ways[0][0] = %d\n", map->ways[0][0]);
+	// while (++j < map->q_rooms)
+	// {
+	// 	if (map->edge_table[1][j] == 1)
+	// 	{
+	// 		z++;
+	// 		if (ft_check_renumber(map, &i, &j) == 1)
+	// 			map->ways[i][z] = j;
+	// 	}
+	// 	map->edge_table[j][1] = 0;
+	// 	map->edge_table[1][j] = 0;
+	// }
+	i = 0;
+	ft_printf("|0|  |1|  |2|  |3|  |4| |5|\n");
+	while (map->ways[0][i] != -1)
+	{
+		ft_printf("|%d| ", map->ways[0][i]);
+		i++;
+	}
+	ft_printf("\n");
+	i = 0;
+	ft_printf("|0|  |1|  |2|  |3|  |4| |5|\n");
+	while (map->ways[1][i] != -1)
+	{
+		ft_printf("|%d| ", map->ways[1][i]);
+		i++;
+	}
+	ft_printf("\n");
+	ft_printlinkstable(map);
 }
 
 void	ft_potentsial(t_map *map)
@@ -82,7 +195,7 @@ void	ft_str_of_names(t_map *map)
 
 	i = map->q_rooms - 1;
 	if (!(map->str = (char**)malloc(sizeof(char*) * map->q_rooms)))
-		exit (-1);
+		exit(-1);
 	temp = map->rooms;
 	while (map->rooms != NULL)
 	{

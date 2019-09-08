@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 14:46:02 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/07 18:03:11 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/08 14:10:49 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		ft_new_roominitial(t_map *map)
 	t_room *new;
 
 	if (!(new = (t_room *)malloc(sizeof(t_room))))
-		exit (-1);
+		exit(-1);
 	new->name = ft_strdup(map->str[0]);
 	new->x = ft_atoi(map->str[1]);
 	new->y = ft_atoi(map->str[2]);
@@ -34,7 +34,7 @@ t_list		*ft_elem_of_rooms(t_map *map)
 	t_list *new;
 
 	if (!(new = (t_list *)malloc(sizeof(t_list))))
-		exit (-1);
+		exit(-1);
 	new->content = (void *)map->new_room;
 	new->content_size = (size_t)(sizeof(map->new_room));
 	new->next = NULL;

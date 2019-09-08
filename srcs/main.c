@@ -6,17 +6,19 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:53:48 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/07 17:26:50 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/08 18:08:23 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-static void		ft_mapinitial(t_map *map)
+static void	ft_mapinitial(t_map *map)
 {
+	map->ways = NULL;
+	map->temp_line = NULL;
 	map->rooms = NULL;
 	map->new_room = NULL;
-	map->edge_table= NULL;
+	map->edge_table = NULL;
 	map->str = NULL;
 	map->q_rooms = 0;
 	map->ants = 0;
@@ -29,10 +31,9 @@ static void		ft_mapinitial(t_map *map)
 	map->temp_y = 0;
 	map->max_x = 0;
 	map->max_y = 0;
-
 }
 
-int				main(int argc, char *argv[])
+int			main(int argc, char *argv[])
 {
 	t_map		map;
 
@@ -41,6 +42,6 @@ int				main(int argc, char *argv[])
 	ft_mapinitial(&map);
 	ft_validation(&map);
 	ft_solution(&map);
-	exit (-1);
+	exit(-1);
 	return (0);
 }

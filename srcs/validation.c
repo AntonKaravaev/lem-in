@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 16:04:02 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/06 15:16:25 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/08 14:13:04 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int		ft_analyse_line(t_map *map, char **line)
 	if (*(*line) == '#' && ft_strequ(*line, "##start\0") == 0
 		&& ft_strequ(*line, "##end\0") == 0)
 		return (1);
-	else if (map->s == 0 && map->e == 0 && ft_strequ(*line, "##start\0" ) == 1
+	else if (map->s == 0 && map->e == 0 && ft_strequ(*line, "##start\0") == 1
 		&& map->ants > 0)
 	{
 		map->s = 1;
@@ -39,7 +39,7 @@ static int		ft_analyse_line(t_map *map, char **line)
 	return (0);
 }
 
-static void		ft_find_amount_of_ants(char **line , t_map *map)
+static void		ft_find_amount_of_ants(char **line, t_map *map)
 {
 	char **str;
 
@@ -61,16 +61,19 @@ static void		ft_save_inf(char **line, t_map *map)
 		ft_find_amount_of_ants(line, map);
 	else if (map->ants != 0 && map->s == 1 && map->e == 0 && map->sf == 0)
 		ft_find_start_room(line, map);
-	else if (map->ants != 0 && map->s == 1 && map->e == 1 && map->sf == 1 && map->ef == 0)
+	else if (map->ants != 0 && map->s == 1 && map->e == 1 && map->sf == 1
+			&& map->ef == 0)
 		ft_find_curr_room(line, map);
-	else if (map->ants != 0 && map->s == 1 && map->e == 1 && map->sf == 1 && map->ef == 1 && map->lf == 0)
+	else if (map->ants != 0 && map->s == 1 && map->e == 1 && map->sf == 1
+			&& map->ef == 1 && map->lf == 0)
 	{
 		if (ft_strchr(*line, 45) == NULL)
 			ft_find_curr_room(line, map);
 		else
 			ft_savelinks(line, map);
 	}
-	else if (map->ants != 0 && map->s == 1 && map->e == 1 && map->sf == 1 && map->ef == 1 && map->lf == 1)
+	else if (map->ants != 0 && map->s == 1 && map->e == 1 && map->sf == 1
+			&& map->ef == 1 && map->lf == 1)
 		ft_savelinks(line, map);
 	else
 		ft_lem_error("INPUT ERROR = \0", line);
@@ -88,7 +91,7 @@ static void		ft_validation_sup1(t_map *map, int *gnl_param, char **line)
 		ft_save_inf(line, map);
 }
 
-void 			ft_validation(t_map *map)
+void			ft_validation(t_map *map)
 {
 	char	*line;
 	int		gnl_number;
@@ -101,8 +104,8 @@ void 			ft_validation(t_map *map)
 	{
 		if ((gnl_number = get_next_line(fd, &line)) < 0)
 			ft_lem_error("READ ERROR(GNL) = \0", &line);
-		else if (gnl_number == 0) // написать функцию проверка корректности если конец файла
-			break;
+		else if (gnl_number == 0)
+			break ;
 		else
 			ft_validation_sup1(map, &gnl_number, &line);
 		ft_strdel(&line);

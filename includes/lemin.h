@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:55:33 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/07 17:31:21 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/08 18:08:32 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct	s_map
 	t_list	*rooms;
 	t_room	*new_room;
 	int		**edge_table;
+	int		**ways;
+	int		*temp_line;
 	char	**str;
 	int		q_rooms; // quantity of rooms
 	int		ants;
@@ -53,6 +55,7 @@ void		ft_savelinks(char **line, t_map *map);
 void		ft_solution(t_map *map);
 void		ft_lem_error(const char *err, char **line);
 void		ft_linkserror();
+void		ft_printlinkstable(t_map *map);
 
 
 #endif
