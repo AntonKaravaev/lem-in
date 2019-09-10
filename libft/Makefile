@@ -6,7 +6,7 @@
 #    By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/09 15:14:49 by crenly-b          #+#    #+#              #
-#    Updated: 2019/09/04 12:39:32 by crenly-b         ###   ########.fr        #
+#    Updated: 2019/09/10 16:24:29 by crenly-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIST_LIBFT = find_ch ft_atoi ft_bzero ft_isalnum ft_isalpha ft_isascii \
 	ft_strsplit ft_strstr ft_strsub ft_strtrim ft_tolower ft_toupper \
 	length_int super_check ft_memcpy ft_memchr ft_memcmp get_next_line\
 	ft_str2del ft_lstadd ft_lstnew ft_lstdelone ft_lstdel ft_lstiter \
-	ft_lstmap \
+	ft_lstmap ft_intstrdel\
 
 LIST_PRINTF = ft_atoi_printf ft_convert1016 ft_convertdigits ft_convertoctal \
 	ft_convertunsi ft_dexeptions ft_dznak ft_fexepbig ft_memory \

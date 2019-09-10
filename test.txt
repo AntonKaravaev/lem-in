@@ -1,19 +1,21 @@
 4
 ##start
-name0 1 4
+st 11 12
 #hell0
 ##end
-name1    2 2
-name2 0 0
-name3 3 4
-name4  1 1
-name5   5 0
-name0-name3
-name4-name3
-name4-name1
-name5-name3
-name4-name3
-name1-name3
-name3-name1
-name2-name5
-name1-name5
+en 0 0
+1 7 8
+2 99 9
+3 4 4
+4 5 5
+5 6 6
+6 7 7
+st-2
+2-3
+3-4
+st-1
+4-en
+1-5
+1-4
+5-6
+6-en

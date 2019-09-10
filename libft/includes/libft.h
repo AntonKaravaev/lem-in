@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 19:20:20 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/02 13:47:32 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/10 16:24:15 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void				ft_strclr(char *s);
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strcpy(char *dst, const char *src);
 void				ft_strdel(char **as);
+void				ft_intstrdel(int **as);
 char				*ft_strdup(const char *s1);
 int					ft_strequ(char const *s1, char const *s2);
 void				ft_striter(char *s, void (*f)(char*));

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sup_lem_in.c                                    :+:      :+:    :+:   */
+/*   sup_lem_in.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 13:43:54 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/08 13:44:02 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/10 15:27:13 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void		ft_printlinkstable(t_map *map)
 	int		j;
 
 	i = 0;
-	ft_printf("    0 1 2 3 4 5\n");
-	ft_printf("   _____________\n");
+	ft_printf("    0 1 2 3 4 5 6 7 8\n");
+	ft_printf("   __________________\n");
 	while (i < map->q_rooms)
 	{
 		j = 0;
@@ -32,5 +32,24 @@ void		ft_printlinkstable(t_map *map)
 		ft_printf("\n");
 		i++;
 	}
-	ft_printf("   -------------\n");
+	ft_printf("   ------------------\n");
+}
+
+void		ft_print_BFS(t_map *map)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	ft_printf("|0| |1| |2|  |3|  |4| |5|\n");
+	while (++i < map->ls_counter)
+	{
+		j = -1;
+		while (map->ways[i][++j] != -1)
+		{
+			ft_printf("|%d| ", map->ways[i][j]);
+		}
+		ft_printf("\n");
+	}
+	ft_printf("\n");
 }
