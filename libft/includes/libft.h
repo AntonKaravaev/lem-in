@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 19:20:20 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/10 16:24:15 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/11 15:56:23 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,9 @@ int					ft_tolower(int c);
 int					ft_toupper(int c);
 int					length_int(int i);
 int					super_check(int n);
+void				ft_intstr2del(int ***as, int quantity);
 void				ft_str2del(char ***str);
+int					ft_strdel_return(char **as);
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));

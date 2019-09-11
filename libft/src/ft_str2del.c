@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 02:27:52 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/06 14:18:11 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/11 15:40:58 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void			ft_str2del(char ***str)
 	{
 		while ((*str)[i] != NULL)
 		{
-			ft_strdel(&((*str)[i]));
+			if (ft_strdel_return(&((*str)[i])) == 1)
+				break ;
 			i++;
 		}
 		free(*str);

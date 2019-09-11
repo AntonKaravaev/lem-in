@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:55:33 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/10 16:25:15 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/11 17:16:35 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_map
 	t_list	*rooms;
 	t_room	*new_room;
 	int		**edge_table;
+	int		**temp_et;
 	int		**ways;
 	int		*temp_line;
 	char	**str;
@@ -56,11 +57,19 @@ void		ft_find_end_room(char **line, t_map *map);
 void		ft_find_curr_room(char **line, t_map *map);
 void		ft_savelinks(char **line, t_map *map);
 void		ft_solution(t_map *map);
+void		ft_str_of_names(t_map *map);
 void		ft_lem_error(const char *err, char **line);
 void		ft_linkserror();
+void		ft_input_error();
+void		ft_cant_find_way_error();
 void		ft_printlinkstable(t_map *map);
 void		ft_print_BFS(t_map *map);
 void 		ft_find_bfs(t_map *map);
+void    	ft_print_way1(t_map *map);
+void		ft_let_ants_move(t_map *map);
+void		ft_create_temp_line(t_map *map);
+void		ft_create_str_ways(t_map *map);
+void        ft_create_way_line(t_map *map, int quantity);
 
 
 #endif

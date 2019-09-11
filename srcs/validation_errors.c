@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 12:49:11 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/08 14:14:25 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/11 17:16:23 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ void	ft_lem_error(const char *err, char **line)
 
 void	ft_linkserror()
 {
-	ft_putstr_fd("INPUT ERROR(LINKS)\n", 2);
+	ft_putstr_fd("INPUT ERROR(LINKS)!\n", 2);
+	exit (-1);
+}
+
+void	ft_cant_find_way_error()
+{
+	ft_putstr_fd("ERROR. No way to solve this map!\n", 2);
+	exit (-1);
+}
+
+void	ft_input_error()
+{
+	ft_putstr_fd("INPUT ERROR!\n", 2);
 	exit (-1);
 }
