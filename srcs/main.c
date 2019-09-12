@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:53:48 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/11 17:45:29 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/12 15:45:30 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ static void	ft_mapinitial(t_map *map)
 	map->ways = NULL;
 	map->temp_line = NULL;
 	map->rooms = NULL;
+	map->goodways = NULL;
+	map->n_g = NULL;	
 	map->new_room = NULL;
 	map->edge_table = NULL;
+	map->et_wc = NULL;
 	map->str = NULL;
 	map->q_rooms = 0;
 	map->ants = 0;
@@ -43,6 +46,7 @@ static void	ft_mapinitial(t_map *map)
 	map->max_y = 0;
 	map->ls_counter = 0;
 	map->bfs = 0;
+	map->ways_to_go = 0;
 	map->bfs_str = NULL;
 }
 

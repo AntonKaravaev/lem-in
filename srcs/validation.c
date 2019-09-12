@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 16:04:02 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/12 13:28:29 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/12 21:59:10 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,14 +95,14 @@ void			ft_validation(t_map *map)
 {
 	char	*line;
 	int		gnl_number;
-	//int		fd;
+	int		fd;
 
-	//fd = open("test.txt", O_RDONLY);
+	fd = open("test.txt", O_RDONLY);
 	line = NULL;
 	gnl_number = 0;
 	while (1)
 	{
-		if ((gnl_number = get_next_line(0, &line)) < 0)
+		if ((gnl_number = get_next_line(fd, &line)) < 0)
 			ft_lem_error("READ ERROR(GNL) = \0", &line);
 		else if (gnl_number == 0)
 			break ;

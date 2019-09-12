@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:55:33 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/11 17:16:35 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/12 22:11:38 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,20 @@ typedef struct	s_room
 	int		pos;
 }				t_room;
 
+typedef struct	s_goodway
+{
+	int		length; // тоже что map->ls_counter;
+	int		*bfs_str;
+}				t_goodway;
+
 typedef struct	s_map
 {
 	t_list	*rooms;
+	t_list	*goodways;
 	t_room	*new_room;
+	t_goodway *n_g; // new good way	
 	int		**edge_table;
+	int		**et_wc; // edge_table without changings
 	int		**temp_et;
 	int		**ways;
 	int		*temp_line;
@@ -43,8 +52,9 @@ typedef struct	s_map
 	int		temp_y;
 	int		max_x;
 	int		max_y;
-	int		ls_counter;
+	int		ls_counter; // количество комнат в bfs
 	int		bfs;
+	int		ways_to_go; // сколько не пересекающихся путей имеет карта
 	int		*bfs_str;
 }				t_map;
 
@@ -70,6 +80,7 @@ void		ft_let_ants_move(t_map *map);
 void		ft_create_temp_line(t_map *map);
 void		ft_create_str_ways(t_map *map);
 void        ft_create_way_line(t_map *map, int quantity);
+void        ft_create_list_of_goodways(t_map *map);
 
 
 #endif

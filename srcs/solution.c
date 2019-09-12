@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:06:44 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/12 14:09:28 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/12 22:19:17 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,102 @@ static void		ft_potensial_sup1(t_map *map, int *i, int *start, int *end)
 	}
 }
 
+void		ft_relinks_of_bfs_way(t_map *map)
+{
+	int i;
+	int	j;
+
+	i = 0;
+	while (i < map->ls_counter - 1)
+	{
+		map->edge_table[map->bfs_str[i]][map->bfs_str[i + 1]] = 0;
+		i++;
+	}
+
+	i = 0;
+	ft_printf("    0 1 2 3 4 5 6 7 8\n");
+	ft_printf("   __________________\n");
+	while (i < map->q_rooms)
+	{
+		j = 0;
+		ft_printf("%d  |", i);
+		while (j < map->q_rooms)
+		{
+			ft_printf("%d|", map->edge_table[i][j]);
+			j++;
+		}
+		ft_printf("\n");
+		i++;
+	}
+	ft_printf("   ------------------\n");
+}
+
+
+void			ft_et_wc(t_map *map)
+{
+	int	i;
+	int j;
+
+	i = 0;
+	if (!(map->et_wc = (int **)malloc(sizeof(int *) * map->q_rooms)))
+		exit(-1);
+	while (i < map->q_rooms)
+	{
+		if (!(map->et_wc[i] =  (int *)malloc(sizeof(int) * map->q_rooms)))
+			exit(-1);
+		i++;
+	}
+	i = -1;
+	while (++i < map->q_rooms)
+	{
+		j = -1;
+		while (++j < map->q_rooms)
+			map->et_wc[i][j] = map->edge_table[i][j];
+	}
+}
+
+void	ft_re_edge_table(t_map *map)
+{
+	int	i;
+	int j;
+
+	i = 0;
+	ft_intstr2del(&map->edge_table, map->q_rooms);
+	if (!(map->edge_table = (int **)malloc(sizeof(int *) * map->q_rooms)))
+		exit(-1);
+	while (i < map->q_rooms)
+	{
+		if (!(map->edge_table[i] =  (int *)malloc(sizeof(int) * map->q_rooms)))
+			exit(-1);
+		i++;
+	}
+	i = -1;
+	while (++i < map->q_rooms)
+	{
+		j = -1;
+		while (++j < map->q_rooms)
+			map->edge_table[i][j] = map->et_wc[i][j];
+	}
+}
+
+void	ft_re_initial_some_inf_in_map(t_map *map)
+{
+	// int i;
+
+	// i = 0;
+	//while ()
+	//ft_intstrdel(map->ways[i])
+	// printf("map->ways[0][0] = %d\n", map->ways[0][0]);
+	// printf("map->ways[0][1] = %d\n", map->ways[0][1]);
+	// printf("map->ways[0][2] = %d\n", map->ways[0][2]);
+	// printf("map->ways[0][3] = %d\n", map->ways[0][3]);
+	ft_intstrdel(&map->bfs_str);
+
+	ft_intstr2del(&map->ways, map->ls_counter);
+	map->bfs = 0;
+	map->ls_counter = 0;
+}
+
 void			ft_potentsial(t_map *map)
 {
 	int i;
@@ -127,6 +223,7 @@ void			ft_potentsial(t_map *map)
 	ft_potensial_sup1(map, &i, &start, &end);
 	//ft_printf("#start = %d\n", start);
 	//ft_printf("#end = %d\n", end);
+	ft_et_wc(map);
 	ft_easy_bfs(map);
 	if (map->bfs == 0)
 		ft_cant_find_way_error();
@@ -138,8 +235,25 @@ void			ft_potentsial(t_map *map)
 	else
 	{
 		i = (start <= end) ? start : end;
-		//ft_printf("#We have potentionaly %d ways\n", i);
-		ft_print_way1(map);
+		ft_printf("#We have potentionaly %d ways\n", i);
+		ft_create_list_of_goodways(map);
+		ft_re_edge_table(map);
+		ft_relinks_of_bfs_way(map); // ставит линки в одну сторону чтобы найти в
+		// будущем пересечения
+		ft_re_initial_some_inf_in_map(map);
+		ft_easy_bfs(map);
+		ft_find_bfs(map);
+		ft_printf("map->bfs_str[0] = %d\n", map->bfs_str[0]);
+		ft_printf("map->bfs_str[1] = %d\n", map->bfs_str[1]);
+		ft_printf("map->bfs_str[2] = %d\n", map->bfs_str[2]);
+		ft_printf("map->bfs_str[3] = %d\n", map->bfs_str[3]);
+		ft_printf("map->bfs_str[4] = %d\n", map->bfs_str[4]);
+		ft_printf("map->bfs_str[5] = %d\n", map->bfs_str[5]);
+		ft_printf("map->bfs_str[6] = %d\n", map->bfs_str[6]);
+		ft_printf("map->bfs_str[7] = %d\n", map->bfs_str[7]);
+		//ft_print_way1(map);
+
+		//ft_save_goodway(map);
 	}
 }
 

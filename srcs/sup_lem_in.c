@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 13:43:54 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/11 15:34:08 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/12 21:36:44 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void		ft_print_BFS(t_map *map)
 		{
 			ft_printf("|%d| ", map->ways[i][j]);
 		}
+		ft_printf("|%d|", map->ways[i][j]);
 		ft_printf("\n");
 	}
 	ft_printf("\n");
