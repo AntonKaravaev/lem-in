@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:06:44 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/11 17:01:48 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/12 14:09:28 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void			ft_easy_bfs(t_map *map)
 	ft_create_str_ways(map);
 	ft_create_temp_line(map);
 	ft_create_way_line(map, ft_how_much_for_one_line(map, 0, 0));
-	ft_print_BFS(map);
+	//ft_print_BFS(map);
 	while (map->bfs != 1)
 	{
 		z = 0;
@@ -125,20 +125,20 @@ void			ft_potentsial(t_map *map)
 	start = 0;
 	end = 0;
 	ft_potensial_sup1(map, &i, &start, &end);
-	ft_printf("#start = %d\n", start);
-	ft_printf("#end = %d\n", end);
+	//ft_printf("#start = %d\n", start);
+	//ft_printf("#end = %d\n", end);
 	ft_easy_bfs(map);
 	if (map->bfs == 0)
 		ft_cant_find_way_error();
-	else if ((start == 1 && end > 0) || (end == 1 && start > 0))
+	else if (start == 1 || end == 1 || map->ants == 1)
 	{
-		ft_printf("#Not more than one way, only one way\n");
+		//ft_printf("#Not more than one way, only one way\n");
 		ft_print_way1(map);
 	}
 	else
 	{
 		i = (start <= end) ? start : end;
-		ft_printf("#We have potentionaly %d ways\n", i);
+		//ft_printf("#We have potentionaly %d ways\n", i);
 		ft_print_way1(map);
 	}
 }
@@ -148,7 +148,7 @@ void			ft_solution(t_map *map)
 	ft_str_of_names(map);
 	if (map->edge_table[0][1] == 1)
 	{
-		ft_printf("#Way has been finded (from start to end)\n");
+		//ft_printf("#Way has been finded (from start to end)\n");
 		ft_let_ants_move(map);
 	}
 	else

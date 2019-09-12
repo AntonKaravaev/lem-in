@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 16:04:02 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/11 17:56:16 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/12 13:28:29 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void		ft_find_amount_of_ants(char **line, t_map *map)
 	else
 	{
 		map->ants = ft_atoilemin(str[0]);
-		ft_printf("map->ants = %d\n", map->ants);
+		//ft_printf("map->ants = %d\n", map->ants);
 		ft_str2del(&str);
 	}
 }
