@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 15:49:57 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/12 16:36:16 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/13 16:16:08 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ static void     ft_save_goodway(t_map *map)
          exit (-1);
     while (++i < map->ls_counter)
         map->n_g->bfs_str[i] = map->bfs_str[i];
+    map->n_g->lines_of_steps = map->ls_counter - 1 + map->ants - 1;
 }
 
-static t_list	*ft_elem_of_goodways(t_map *map)
+t_list	*ft_elem_of_goodways(t_map *map)
 {
 	t_list *new;
 

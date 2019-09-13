@@ -6,7 +6,7 @@
 #    By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/25 01:00:32 by crenly-b          #+#    #+#              #
-#    Updated: 2019/09/12 22:11:21 by crenly-b         ###   ########.fr        #
+#    Updated: 2019/09/13 16:13:46 by crenly-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIB		= -L libft/ -lft
 
 LIST = main validation atoilemin roomsfinder validation_errors savelinks \
 	solution sup_lem_in bfs_finder print_way work_with_memory findonemoreway \
-	save_goodways \
+	save_goodways test\
 
 OBJS = $(addprefix objs/, $(addsuffix .o, $(LIST)))
 

@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 15:35:11 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/12 23:12:32 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/13 13:10:27 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void 	ft_find_bfs(t_map *map)
 		exit(-1);
 	while (++i < map->ls_counter)
 		map->bfs_str[i] = -1;
+	map->bfs_str[i] = -1;
 	map->bfs_str[0] = 0;
 	map->bfs_str[map->ls_counter - 1] = 1;
 	z = map->ls_counter - 1;
@@ -41,12 +42,12 @@ void 	ft_find_bfs(t_map *map)
 		z--;
 	}
 	i = 0;
-	//ft_printf("Thats a right way\n");
-	// while (i < map->ls_counter - 1)
-	// {
-	// 	ft_printf("%s ", map->str[map->bfs_str[i]]);
-	// 	i++;
-	// }
-	// ft_printf("%s\n", map->str[map->bfs_str[i]]);
-	// ft_printf("\n");
+	ft_printf("Thats a right way\n");
+	while (i < map->ls_counter - 1)
+	{
+		ft_printf("%s ", map->str[map->bfs_str[i]]);
+		i++;
+	}
+	ft_printf("%s\n", map->str[map->bfs_str[i]]);
+	ft_printf("\n");
 }

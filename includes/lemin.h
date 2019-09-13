@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:55:33 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/12 22:11:38 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/13 18:45:54 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_room
 typedef struct	s_goodway
 {
 	int		length; // тоже что map->ls_counter;
+	int		lines_of_steps;
 	int		*bfs_str;
 }				t_goodway;
 
@@ -37,11 +38,12 @@ typedef struct	s_map
 	t_goodway *n_g; // new good way	
 	int		**edge_table;
 	int		**et_wc; // edge_table without changings
-	int		**temp_et;
+	int		*expand_et; // расширить (хранение комнат, которые надо раздвоить) edge_table
 	int		**ways;
 	int		*temp_line;
 	char	**str;
 	int		q_rooms; // quantity of rooms
+	int		real_rooms; // quantity of expand_rooms
 	int		ants;
 	int		s; // start
 	int		e; // end
@@ -81,6 +83,8 @@ void		ft_create_temp_line(t_map *map);
 void		ft_create_str_ways(t_map *map);
 void        ft_create_way_line(t_map *map, int quantity);
 void        ft_create_list_of_goodways(t_map *map);
-
+t_list		*ft_elem_of_goodways(t_map *map);
+void    	ft_cut_badlinks(t_map *map);
+void    	ft_test(t_map *map);
 
 #endif

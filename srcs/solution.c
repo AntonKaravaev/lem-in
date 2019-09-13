@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:06:44 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/12 22:19:17 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/13 16:47:11 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,6 @@ void			ft_easy_bfs(t_map *map)
 			break;
 		ft_create_way_line(map, z);
 	}
-	ft_printlinkstable(map);
-	ft_print_BFS(map);
-	ft_find_bfs(map);
 }
 
 static void		ft_potensial_sup1(t_map *map, int *i, int *start, int *end)
@@ -152,6 +149,8 @@ void			ft_et_wc(t_map *map)
 	int j;
 
 	i = 0;
+	if (map->et_wc != NULL)
+		ft_intstr2del(&map->et_wc, map->q_rooms);
 	if (!(map->et_wc = (int **)malloc(sizeof(int *) * map->q_rooms)))
 		exit(-1);
 	while (i < map->q_rooms)
@@ -175,7 +174,8 @@ void	ft_re_edge_table(t_map *map)
 	int j;
 
 	i = 0;
-	ft_intstr2del(&map->edge_table, map->q_rooms);
+	if (map->edge_table != NULL)
+		ft_intstr2del(&map->edge_table, map->q_rooms);
 	if (!(map->edge_table = (int **)malloc(sizeof(int *) * map->q_rooms)))
 		exit(-1);
 	while (i < map->q_rooms)
@@ -225,6 +225,9 @@ void			ft_potentsial(t_map *map)
 	//ft_printf("#end = %d\n", end);
 	ft_et_wc(map);
 	ft_easy_bfs(map);
+	ft_printlinkstable(map);
+	ft_print_BFS(map);
+	ft_find_bfs(map);
 	if (map->bfs == 0)
 		ft_cant_find_way_error();
 	else if (start == 1 || end == 1 || map->ants == 1)
@@ -238,22 +241,44 @@ void			ft_potentsial(t_map *map)
 		ft_printf("#We have potentionaly %d ways\n", i);
 		ft_create_list_of_goodways(map);
 		ft_re_edge_table(map);
+		
 		ft_relinks_of_bfs_way(map); // ставит линки в одну сторону чтобы найти в
 		// будущем пересечения
-		ft_re_initial_some_inf_in_map(map);
-		ft_easy_bfs(map);
-		ft_find_bfs(map);
-		ft_printf("map->bfs_str[0] = %d\n", map->bfs_str[0]);
-		ft_printf("map->bfs_str[1] = %d\n", map->bfs_str[1]);
-		ft_printf("map->bfs_str[2] = %d\n", map->bfs_str[2]);
-		ft_printf("map->bfs_str[3] = %d\n", map->bfs_str[3]);
-		ft_printf("map->bfs_str[4] = %d\n", map->bfs_str[4]);
-		ft_printf("map->bfs_str[5] = %d\n", map->bfs_str[5]);
-		ft_printf("map->bfs_str[6] = %d\n", map->bfs_str[6]);
-		ft_printf("map->bfs_str[7] = %d\n", map->bfs_str[7]);
-		//ft_print_way1(map);
+		ft_printlinkstable(map);
+		ft_test(map);
 
-		//ft_save_goodway(map);
+
+	// 	ft_re_initial_some_inf_in_map(map);
+	// 	ft_easy_bfs(map);
+	// 	ft_re_edge_table(map);
+	// 	ft_printlinkstable(map);
+	// 	ft_print_BFS(map);
+	// 	ft_find_bfs(map);
+
+
+	// 	ft_re_edge_table(map);
+	// 	ft_cut_badlinks(map);
+	// 	ft_et_wc(map);
+	// 	ft_re_initial_some_inf_in_map(map);
+	// 	ft_easy_bfs(map);
+	// 	ft_print_BFS(map);
+	// 	ft_find_bfs(map);
+	// 	ft_lstadd(&map->goodways, ft_elem_of_goodways(map));
+	// 	ft_re_edge_table(map);
+	// 	ft_relinks_of_bfs_way(map);
+	// 	ft_re_initial_some_inf_in_map(map);
+	// 	ft_easy_bfs(map);
+	// 	ft_re_edge_table(map);
+	// 	ft_printlinkstable(map);
+	// 	ft_print_BFS(map);
+	// 	ft_find_bfs(map);				
+	// //	ft_relinks_of_bfs_way(map);
+
+
+	// 	//ft_printlinkstable(map);;
+	// 	//ft_print_way1(map);
+
+	// 	//ft_save_goodway(map);
 	}
 }
 

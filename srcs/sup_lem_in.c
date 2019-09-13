@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 13:43:54 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/12 21:36:44 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/13 18:47:58 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void		ft_printlinkstable(t_map *map)
 	int		j;
 
 	i = 0;
-	ft_printf("    0 1 2 3 4 5 6 7 8\n");
-	ft_printf("   __________________\n");
+	ft_printf("    0 1 2 3 4 5 6 7 8 9 \n");
+	ft_printf("   _____________________\n");
 	while (i < map->q_rooms)
 	{
 		j = 0;
@@ -32,7 +32,7 @@ void		ft_printlinkstable(t_map *map)
 		ft_printf("\n");
 		i++;
 	}
-	ft_printf("   ------------------\n");
+	ft_printf("   ---------------------\n");
 }
 
 void		ft_print_BFS(t_map *map)
