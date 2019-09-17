@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:55:33 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/13 18:45:54 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/17 06:55:15 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct	s_map
 	int		bfs;
 	int		ways_to_go; // сколько не пересекающихся путей имеет карта
 	int		*bfs_str;
+	int		*pl_dup; //для расширения bfs с дублированными комнатами
 }				t_map;
 
 int			main(int argc, char *argv[]);
@@ -85,6 +86,11 @@ void        ft_create_way_line(t_map *map, int quantity);
 void        ft_create_list_of_goodways(t_map *map);
 t_list		*ft_elem_of_goodways(t_map *map);
 void    	ft_cut_badlinks(t_map *map);
+void		ft_relinks_of_bfs_way(t_map *map);
 void    	ft_test(t_map *map);
+void		ft_easy_bfs(t_map *map);
+void		ft_re_initial_some_inf_in_map(t_map *map);
+void		ft_re_edge_table(t_map *map);
+void		ft_et_wc(t_map *map);
 
 #endif

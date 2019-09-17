@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:53:48 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/13 18:46:13 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/17 06:54:39 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static void	ft_mapinitial(t_map *map)
 	map->bfs = 0;
 	map->ways_to_go = 0;
 	map->bfs_str = NULL;
+	map->pl_dup = NULL;
 }
 
 int			main(int argc, char *argv[])

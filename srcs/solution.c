@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:06:44 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/13 16:47:11 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/17 04:52:26 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,16 @@ void			ft_easy_bfs(t_map *map)
 	int j;
 	int z;
 
-	ft_printlinkstable(map);
+	//ft_printlinkstable(map);
 	ft_create_str_ways(map);
 	ft_create_temp_line(map);
 	ft_create_way_line(map, ft_how_much_for_one_line(map, 0, 0));
-	//ft_print_BFS(map);
+	
 	while (map->bfs != 1)
 	{
 		z = 0;
 		i = 0;
-		while (++i < map->ls_counter)
+		while (++i < map->ls_counter && i < map->q_rooms)
 		{
 			j = -1;
 			while (map->ways[i][++j] != -1 && map->bfs != 1)
@@ -91,6 +91,7 @@ void			ft_easy_bfs(t_map *map)
 			break;
 		ft_create_way_line(map, z);
 	}
+	ft_print_BFS(map);
 }
 
 static void		ft_potensial_sup1(t_map *map, int *i, int *start, int *end)
@@ -225,8 +226,7 @@ void			ft_potentsial(t_map *map)
 	//ft_printf("#end = %d\n", end);
 	ft_et_wc(map);
 	ft_easy_bfs(map);
-	ft_printlinkstable(map);
-	ft_print_BFS(map);
+	ft_re_edge_table(map);
 	ft_find_bfs(map);
 	if (map->bfs == 0)
 		ft_cant_find_way_error();
@@ -244,7 +244,8 @@ void			ft_potentsial(t_map *map)
 		
 		ft_relinks_of_bfs_way(map); // ставит линки в одну сторону чтобы найти в
 		// будущем пересечения
-		ft_printlinkstable(map);
+		ft_et_wc(map); /// Удалить потом (так как херится исходник карты - смотри выши!)
+		//ft_printlinkstable(map);
 		ft_test(map);
 
 
@@ -257,7 +258,7 @@ void			ft_potentsial(t_map *map)
 
 
 	// 	ft_re_edge_table(map);
-	// 	ft_cut_badlinks(map);
+	//ft_cut_badlinks(map);
 	// 	ft_et_wc(map);
 	// 	ft_re_initial_some_inf_in_map(map);
 	// 	ft_easy_bfs(map);

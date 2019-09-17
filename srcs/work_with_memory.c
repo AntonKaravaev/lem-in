@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 14:39:39 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/11 15:38:40 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/16 23:21:50 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,37 +21,32 @@ void		ft_create_str_ways(t_map *map)
 		exit(-1);
 }
 
-static void ft_cwc_sup1(t_map *map, int *j, int *z)
+static void ft_cwc_sup1(t_map *map, int j, int z)
 {
-    while (map->temp_line[*j] != -1 && map->bfs != 1)
+    while (map->temp_line[j] != -1 && map->bfs != 1)
 	    {
-		    map->ways[map->ls_counter][*z] = map->temp_line[*j];
-		    if (map->ways[map->ls_counter][*z] == 1)
+		    map->ways[map->ls_counter][z] = map->temp_line[j];
+		    if (map->ways[map->ls_counter][z] == 1)
 		    {
 			    ft_intstrdel(&(map->ways[map->ls_counter]));
 			    if (!(map->ways[map->ls_counter] = (int *)malloc(sizeof(int) * 2)))
 				    exit(-1);
 			    map->ways[map->ls_counter][0] = 1;
-			    printf("BSF has done, for %d steps\n", map->ls_counter + 1);
+			    printf("BFS has done, for %d steps\n", map->ls_counter + 1);
 			    map->bfs = 1;
 		    }
-		    (*z)++;
-		    (*j)++;
+		    z++;
+		    j++;
 	    }
-	*j = 0;
-	map->ways[map->ls_counter][*z] = -1;
-	while (map->temp_line[*j] != -1 && *j < map->q_rooms)
-		map->temp_line[(*j)++] = -1;
+	j = 0;
+	map->ways[map->ls_counter][z] = -1;
+	while (map->temp_line[j] != -1 && j < map->q_rooms)
+		map->temp_line[j++] = -1;
 	map->ls_counter++;
 }
 
 void        ft_create_way_line(t_map *map, int quantity)
 {
-	int j;
-	int z;
-
-	j = 0;
-	z = 0;
 	if (map->ls_counter == 0)
 	{
 		if (!(map->ways[map->ls_counter] = (int *)malloc(sizeof(int) * (2))))
@@ -59,11 +54,11 @@ void        ft_create_way_line(t_map *map, int quantity)
 		map->ways[map->ls_counter][0] = 0;
 		map->ways[map->ls_counter][1] = -1;
 		map->ls_counter++;
-		j = 0;
 	}
 	if (!(map->ways[map->ls_counter] = (int *)malloc(sizeof(int) * (quantity + 1))))
 		exit(-1);
-     ft_cwc_sup1(map, &j, &z);
+	map->ways[map->ls_counter][quantity] = -1;
+    ft_cwc_sup1(map, 0, 0);
 }
 
 void			ft_create_temp_line(t_map *map)
