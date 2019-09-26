@@ -145,6 +145,8 @@ void			ft_bfs(t_room **ar_r, int q_rooms, t_farm *farm)
 
 void	ft_solution(t_map *map, t_farm *farm)
 {
+	t_path *answer;
+
 	ft_str_of_names(map);
 	ft_create_ways_lines(farm); // helper of BFS
 	ft_create_line(farm);
@@ -154,5 +156,9 @@ void	ft_solution(t_map *map, t_farm *farm)
 	if (farm->bfs_flag == 0)
 		ft_cant_find_way_error();
 	else if (farm->mpw == 1 || map->ants == 1)
+	{
 		ft_print_way1(map, farm);
+		//return ; 
+	}
+	answer = ft_suurballe(farm);
 }
