@@ -25,12 +25,12 @@ typedef struct	s_room
 	int 	*link; //Инициализировать N , конец -1
 }				t_room;
 
-typedef struct	s_goodway
+typedef struct	s_path
 {
-	int		length; // тоже что map->ls_counter;
-	int		lines_of_steps;
-	int		*bfs_str;
-}				t_goodway;
+	int		size; // тоже что map->ls_counter;
+//	int		lines_of_steps;
+	int		*bfs;
+}				t_path;
 
 typedef struct	s_map
 {
@@ -59,7 +59,7 @@ typedef struct s_farm
 	t_room	**array_room;
 	int 	**ways_line; // BFS potensial ways
 	int 	*line; // for finding bfs
-	int		*bfs; // current good bfs
+	int		*bfs; // current good bfs ||size???????????????????
 	int		bfs_flag : 2; // do we have bfs or not.
 	int		mpw; // minimal_potensial_ways! Be careful it rewrites every time if you use bfs fucction
 	int 	levels_of_ways_line;
@@ -67,7 +67,7 @@ typedef struct s_farm
 } t_farm;
 
 
-int			main(int argc, char *argv[]);
+int			main(int argc, char *argv[]);       
 void		ft_validation(t_map *map, t_farm *farm);
 int			ft_atoilemin(char *s);
 void		ft_atoicoor(char *s);
