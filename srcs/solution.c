@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:06:44 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/26 23:54:26 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/26 23:56:10 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ static void		ft_bfs_finder(t_farm *farm)
 	}
 }
 
-static void		ft_crwl_sup1(t_farm *farm, int pos)
-{
+// static void		ft_crwl_sup1(t_farm *farm, int pos)
+// {
 
-}
+// }
 
 static void		ft_crwl_sup2(t_farm *farm, int pos)
 {
