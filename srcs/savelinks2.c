@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 14:01:20 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/26 14:05:17 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/26 23:43:38 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ static void	ft_fiil_in_links_sup2(t_map *map, t_farm *farm)
 	int i;
 
 	i = 0;
-	while (farm->array_room[map->temp_x]->link[i] != -1)
+	while (farm->arr[map->temp_x]->link[i] != -1)
 		i++;
-	farm->array_room[map->temp_x]->link[i] = map->temp_y;
+	farm->arr[map->temp_x]->link[i] = map->temp_y;
 	i = 0;
-	while (farm->array_room[map->temp_y]->link[i] != -1)
+	while (farm->arr[map->temp_y]->link[i] != -1)
 		i++;
-	farm->array_room[map->temp_y]->link[i] = map->temp_x;
+	farm->arr[map->temp_y]->link[i] = map->temp_x;
 }
 
 static void	ft_fiil_in_links_sup3(t_map *map, t_room **curr_room)

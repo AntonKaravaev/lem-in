@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 16:21:17 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/26 14:03:32 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/26 23:42:17 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ static void	ft_create_array_rooms(t_farm *farm, t_map *map)
 	i = 0;
 	j = map->q_rooms - 1;
 	temp = map->rooms;
-	if (!(farm->array_room =
+	if (!(farm->arr =
 		(t_room **)malloc(sizeof(t_room *) * map->q_rooms)))
 		exit(-1);
 	while (temp != NULL)
 	{
-		farm->array_room[j] = (t_room *)temp->content;
-		if (!(farm->array_room[j]->link =
+		farm->arr[j] = (t_room *)temp->content;
+		if (!(farm->arr[j]->link =
 			(int *)malloc(sizeof(int) * map->q_rooms)))
 			exit(-1);
 		i = -1;
 		while (++i < map->q_rooms)
-			farm->array_room[j]->link[i] = -1;
+			farm->arr[j]->link[i] = -1;
 		temp = temp->next;
 		j--;
 	}

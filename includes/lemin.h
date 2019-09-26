@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:55:33 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/26 14:23:11 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/26 23:47:36 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ typedef struct	s_map
 typedef struct s_farm
 {
 	// все выделяется один раз, молочится тоже будет один раз в самом конце!!!
-	int		count_room;
-	t_room	**array_room;
-	int 	**ways_line; // BFS potensial ways
+	int		cnt;
+	t_room	**arr;
+	int 	**wl; // BFS potensial ways
 	int 	*line; // for finding bfs
 	int		*bfs; // current good bfs
 	int		bfs_flag : 2; // do we have bfs or not.
 	int		mpw; // minimal_potensial_ways! Be careful it rewrites every time if you use bfs fucction
-	int 	levels_of_ways_line;
+	int 	lwl; // levels_of_rooms
 	int		p; //iterator like global param
 } t_farm;
 

@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 14:39:39 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/26 12:21:53 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/26 23:47:14 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	ft_create_ways_lines(t_farm *farm)
 	int i;
 
 	i = -1;
-	if (!(farm->ways_line = (int **)malloc(sizeof(int *) * 1000)))
+	if (!(farm->wl = (int **)malloc(sizeof(int *) * 1000)))
 		exit (-1);
 	while (++i < 1000)
 	{
-		if (!(farm->ways_line[i] = (int *)malloc(sizeof(int) * 1000)))
+		if (!(farm->wl[i] = (int *)malloc(sizeof(int) * 1000)))
 			exit (-1);
 	}
 }
@@ -52,16 +52,16 @@ void	ft_fiil_in_ways_lines(t_farm *farm)
 {
 	int i;
 
-	farm->ways_line[0][0] = 0;
-	farm->ways_line[0][1] = -1;
+	farm->wl[0][0] = 0;
+	farm->wl[0][1] = -1;
 	farm->mpw = 0;
 	i = -1;
-	while (farm->array_room[0]->link[++i] != -1)
+	while (farm->arr[0]->link[++i] != -1)
 	{
-		farm->ways_line[1][i] = farm->array_room[0]->link[i];
+		farm->wl[1][i] = farm->arr[0]->link[i];
 		farm->mpw++;
 	}	
-	farm->ways_line[1][i] = -1;
+	farm->wl[1][i] = -1;
 }
 
 void	ft_create_line(t_farm *farm)
@@ -84,7 +84,7 @@ void	ft_fiil_in_line(t_farm *farm)
 	}
 	farm->bfs[0] = -1;
 	i = -1;
-	while (farm->array_room[0]->link[++i] != -1)
-		farm->line[i + 1] = farm->array_room[0]->link[i];
+	while (farm->arr[0]->link[++i] != -1)
+		farm->line[i + 1] = farm->arr[0]->link[i];
 	farm->line[i + 1] = -1;
 }

@@ -6,7 +6,7 @@
 #    By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/25 01:00:32 by crenly-b          #+#    #+#              #
-#    Updated: 2019/09/26 14:02:15 by crenly-b         ###   ########.fr        #
+#    Updated: 2019/09/26 23:32:26 by crenly-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJS = $(addprefix objs/, $(addsuffix .o, $(LIST)))
 
 all: $(NAME)
 
-objs/%.o: srcs/%.c
+objs/%.o: srcs/%.c includes/lemin.h
 		gcc $(FLAGS) -c $< -o $@ $(HEADER)
 
 $(NAME): objs make_lib $(OBJS) libft/libft.a 

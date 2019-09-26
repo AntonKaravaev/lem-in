@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 12:34:03 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/26 13:39:56 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/26 23:32:41 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ void			ft_print_way1(t_map *map, t_farm *farm)
 	int z;
 	int num_ant;
 
-	i = map->ants + (farm->levels_of_ways_line - 1) - 1;
+	i = map->ants + (farm->lwl - 1) - 1;
 	ft_pws_sup1(map, &z, &j);
 	while (i-- > 0)
 	{
 		z = ++j;
-		if (z < farm->levels_of_ways_line - 1)
+		if (z < farm->lwl - 1)
 			num_ant = 1;
 		else if (map->sf > 0)
 		{
