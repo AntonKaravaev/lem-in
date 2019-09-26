@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 16:04:02 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/12 21:59:10 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/25 23:27:07 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,11 @@ static void		ft_find_amount_of_ants(char **line, t_map *map)
 	else
 	{
 		map->ants = ft_atoilemin(str[0]);
-		//ft_printf("map->ants = %d\n", map->ants);
 		ft_str2del(&str);
 	}
 }
 
-static void		ft_save_inf(char **line, t_map *map)
+static void		ft_save_inf(char **line, t_map *map, t_farm *farm)
 {
 	if (map->ants == 0 && map->s == 0 && map->e == 0)
 		ft_find_amount_of_ants(line, map);
@@ -70,16 +69,16 @@ static void		ft_save_inf(char **line, t_map *map)
 		if (ft_strchr(*line, 45) == NULL)
 			ft_find_curr_room(line, map);
 		else
-			ft_savelinks(line, map);
+			ft_savelinks(line, map, farm);
 	}
 	else if (map->ants != 0 && map->s == 1 && map->e == 1 && map->sf == 1
 			&& map->ef == 1 && map->lf == 1)
-		ft_savelinks(line, map);
+		ft_savelinks(line, map, farm);
 	else
 		ft_lem_error("INPUT ERROR = \0", line);
 }
 
-static void		ft_validation_sup1(t_map *map, int *gnl_param, char **line)
+static void		ft_validation_sup1(t_map *map, t_farm *farm, int *gnl_param, char **line)
 {
 	if (*line == NULL)
 		ft_lem_error("INPUT ERROR(line == NULL) = \0", line);
@@ -88,10 +87,10 @@ static void		ft_validation_sup1(t_map *map, int *gnl_param, char **line)
 	else if (*gnl_param == -1)
 		ft_lem_error("INPUT ERROR(line) = \0", line);
 	else if (*gnl_param == 0)
-		ft_save_inf(line, map);
+		ft_save_inf(line, map, farm);
 }
 
-void			ft_validation(t_map *map)
+void			ft_validation(t_map *map, t_farm *farm)
 {
 	char	*line;
 	int		gnl_number;
@@ -107,7 +106,7 @@ void			ft_validation(t_map *map)
 		else if (gnl_number == 0)
 			break ;
 		else
-			ft_validation_sup1(map, &gnl_number, &line);
+			ft_validation_sup1(map, farm, &gnl_number, &line);
 		ft_strdel(&line);
 	}
 }

@@ -6,72 +6,11 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 14:39:39 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/16 23:21:50 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/26 12:21:53 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
-
-void		ft_create_str_ways(t_map *map)
-{
-	int i;
-
-	i = 0;
-	if (!(map->ways = (int **)malloc(sizeof(int *) * map->q_rooms)))
-		exit(-1);
-}
-
-static void ft_cwc_sup1(t_map *map, int j, int z)
-{
-    while (map->temp_line[j] != -1 && map->bfs != 1)
-	    {
-		    map->ways[map->ls_counter][z] = map->temp_line[j];
-		    if (map->ways[map->ls_counter][z] == 1)
-		    {
-			    ft_intstrdel(&(map->ways[map->ls_counter]));
-			    if (!(map->ways[map->ls_counter] = (int *)malloc(sizeof(int) * 2)))
-				    exit(-1);
-			    map->ways[map->ls_counter][0] = 1;
-			    printf("BFS has done, for %d steps\n", map->ls_counter + 1);
-			    map->bfs = 1;
-		    }
-		    z++;
-		    j++;
-	    }
-	j = 0;
-	map->ways[map->ls_counter][z] = -1;
-	while (map->temp_line[j] != -1 && j < map->q_rooms)
-		map->temp_line[j++] = -1;
-	map->ls_counter++;
-}
-
-void        ft_create_way_line(t_map *map, int quantity)
-{
-	if (map->ls_counter == 0)
-	{
-		if (!(map->ways[map->ls_counter] = (int *)malloc(sizeof(int) * (2))))
-			exit(-1);
-		map->ways[map->ls_counter][0] = 0;
-		map->ways[map->ls_counter][1] = -1;
-		map->ls_counter++;
-	}
-	if (!(map->ways[map->ls_counter] = (int *)malloc(sizeof(int) * (quantity + 1))))
-		exit(-1);
-	map->ways[map->ls_counter][quantity] = -1;
-    ft_cwc_sup1(map, 0, 0);
-}
-
-void			ft_create_temp_line(t_map *map)
-{
-	int i;
-
-	i = -1;
-	if (!(map->temp_line = (int *)malloc(sizeof(int) * map->q_rooms)))
-	 		exit(-1);
-	while (++i < map->q_rooms)
-		map->temp_line[i] = -1;
-	map->temp_line[0] = 0;
-}
 
 void			ft_str_of_names(t_map *map)
 {
@@ -93,4 +32,59 @@ void			ft_str_of_names(t_map *map)
 	}
 	map->rooms = temp;
 	temp = NULL;
+}
+
+void	ft_create_ways_lines(t_farm *farm)
+{
+	int i;
+
+	i = -1;
+	if (!(farm->ways_line = (int **)malloc(sizeof(int *) * 1000)))
+		exit (-1);
+	while (++i < 1000)
+	{
+		if (!(farm->ways_line[i] = (int *)malloc(sizeof(int) * 1000)))
+			exit (-1);
+	}
+}
+
+void	ft_fiil_in_ways_lines(t_farm *farm)
+{
+	int i;
+
+	farm->ways_line[0][0] = 0;
+	farm->ways_line[0][1] = -1;
+	farm->mpw = 0;
+	i = -1;
+	while (farm->array_room[0]->link[++i] != -1)
+	{
+		farm->ways_line[1][i] = farm->array_room[0]->link[i];
+		farm->mpw++;
+	}	
+	farm->ways_line[1][i] = -1;
+}
+
+void	ft_create_line(t_farm *farm)
+{
+	if (!(farm->line = (int *)malloc(sizeof(int) * 1000)))
+		exit (-1);
+}
+
+void	ft_fiil_in_line(t_farm *farm)
+{
+	int i;
+
+	farm->bfs_flag = 0;
+	farm->line[0] = 0;
+	farm->line[1] = -1;
+	if (farm->bfs == NULL)
+	{
+		if (!(farm->bfs = (int *)malloc(sizeof(int) * 1000)))
+			exit (-1);
+	}
+	farm->bfs[0] = -1;
+	i = -1;
+	while (farm->array_room[0]->link[++i] != -1)
+		farm->line[i + 1] = farm->array_room[0]->link[i];
+	farm->line[i + 1] = -1;
 }

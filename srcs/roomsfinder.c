@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 14:46:02 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/13 18:39:52 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/09/26 12:10:56 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void		ft_new_roominitial(t_map *map)
 	map->max_x = (new->x >= map->max_x) ? new->x : map->max_x;
 	map->max_y = (new->y >= map->max_y) ? new->y : map->max_y;
 	new->pos = ++map->q_rooms - 1;
+	new->paint_mark = -1;
 	map->new_room = new;
 	new = NULL;
 	ft_str2del(&map->str);
