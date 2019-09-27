@@ -151,6 +151,7 @@ void	ft_solution(t_map *map, t_farm *farm)
 	ft_create_ways_lines(farm); // helper of BFS
 	ft_create_line(farm);
 	farm->cnt = map->q_rooms;
+	olya_write_farm(farm);
 	ft_bfs(farm->arr, farm->cnt, farm);
 	ft_print_BFS(farm);
 	if (farm->bfs_flag == 0)
@@ -158,7 +159,7 @@ void	ft_solution(t_map *map, t_farm *farm)
 	else if (farm->mpw == 1 || map->ants == 1)
 	{
 		ft_print_way1(map, farm);
-		//return ; 
+		return ; 
 	}
 	answer = ft_suurballe(farm);
 }

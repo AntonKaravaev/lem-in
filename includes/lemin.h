@@ -27,9 +27,9 @@ typedef struct	s_room
 
 typedef struct	s_path
 {
-	int		size; // тоже что map->ls_counter;
+	int		size; 
 //	int		lines_of_steps;
-	int		*bfs;
+	int		bfs[100000];
 }				t_path;
 
 typedef struct	s_map
@@ -64,6 +64,7 @@ typedef struct s_farm
 	int		mpw; // minimal_potensial_ways! Be careful it rewrites every time if you use bfs fucction
 	int 	lwl; // levels_of_rooms
 	int		p; //iterator like global param
+	int		cgp;
 } t_farm;
 
 
@@ -92,5 +93,11 @@ void		ft_print_BFS_potensial(t_farm *farm);
 void		ft_print_BFS(t_farm *farm);
 void		ft_print_temp_line(t_farm *farm);
 void        ft_print_way1(t_map *map, t_farm *farm);
+
+
+void		split_rev(t_path *path, t_farm *farm);
+t_path		*ft_suurballe(t_farm *orgn);
+void		olya_write_farm(t_farm *farm);
+void		olya_write_dfarm(t_farm *farm);
 
 #endif
