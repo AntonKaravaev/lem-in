@@ -60,11 +60,11 @@ typedef struct s_farm
 	int 	**wl; // BFS potensial ways
 	int 	*line; // for finding bfs
 	int		*bfs; // current good bfs ||size???????????????????
-	int		bfs_flag : 2; // do we have bfs or not.
+	int		bfs_flag; // do we have bfs or not.
 	int		mpw; // minimal_potensial_ways! Be careful it rewrites every time if you use bfs fucction
 	int 	lwl; // levels_of_rooms
 	int		p; //iterator like global param
-	int		cgp;
+	int		cgp; //count good paths
 } t_farm;
 
 
@@ -93,11 +93,20 @@ void		ft_print_BFS_potensial(t_farm *farm);
 void		ft_print_BFS(t_farm *farm);
 void		ft_print_temp_line(t_farm *farm);
 void        ft_print_way1(t_map *map, t_farm *farm);
-
+void		ft_bfs(t_room **ar_r, int q_rooms, t_farm *farm);
 
 void		split_rev(t_path *path, t_farm *farm);
-t_path		*ft_suurballe(t_farm *orgn);
+t_path		*ft_suurballe(t_farm *orgn, t_farm *split, t_farm *pfarm);
 void		olya_write_farm(t_farm *farm);
 void		olya_write_dfarm(t_farm *farm);
-
+void		add_path(t_path *good, t_farm *farm , int k);
+void		add_link(t_room *room, int new);
+void		change_link(t_room *room, int change, int new);
+void		delete_link(t_room *room, int del_link);
+void		ft_fill_path(t_path *path, int *bfs, int size);
+void		init_split(t_farm *orgn, t_farm *new);
+void		olya_write_path(t_path path);
+void		olya_write_good(t_path *good, int cgp);
+void		ft_clean_links(t_farm *farm);
+void		ft_dup_clear_farm(t_farm *pfarm, t_farm *orgn);
 #endif

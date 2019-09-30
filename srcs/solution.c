@@ -118,6 +118,7 @@ void			ft_bfs(t_room **ar_r, int q_rooms, t_farm *farm)
 	i = 1;
 	ft_fiil_in_ways_lines(farm);
 	ft_fiil_in_line(farm);
+
 	if (farm->bfs_flag == 1)
 		return ;
 	while (++i < q_rooms)
@@ -133,7 +134,7 @@ void			ft_bfs(t_room **ar_r, int q_rooms, t_farm *farm)
 				if (farm->bfs_flag == 1)
 				{
 					farm->lwl = i + 1;
-					ft_print_BFS_potensial(farm);
+					//ft_print_BFS_potensial(farm);
 					ft_bfs_finder(farm);
 					return ;
 				}
@@ -146,20 +147,32 @@ void			ft_bfs(t_room **ar_r, int q_rooms, t_farm *farm)
 void	ft_solution(t_map *map, t_farm *farm)
 {
 	t_path *answer;
+	t_farm split;
+	t_farm pfarm;
 
 	ft_str_of_names(map);
-	ft_create_ways_lines(farm); // helper of BFS
-	ft_create_line(farm);
 	farm->cnt = map->q_rooms;
-	olya_write_farm(farm);
-	ft_bfs(farm->arr, farm->cnt, farm);
-	ft_print_BFS(farm);
-	if (farm->bfs_flag == 0)
+	ft_farm_initial(&split, map);
+	
+	init_split(farm, &split);//olya
+	
+	ft_create_ways_lines(&split); // helper of BFS
+	ft_create_line(&split);
+
+	//ft_memset(&pfarm, 0, sizeof(t_farm)); 
+	ft_dup_clear_farm(&pfarm, farm);//olya
+	//olya_write_farm(farm);
+	
+	//olya_write_dfarm(&split);
+	ft_bfs(split.arr, split.cnt, &split);
+	//ft_print_BFS(&split);
+
+	if (split.bfs_flag == 0)
 		ft_cant_find_way_error();
-	else if (farm->mpw == 1 || map->ants == 1)
+	else if (split.mpw == 1 || map->ants == 1)
 	{
-		ft_print_way1(map, farm);
+		ft_print_way1(map, &split);
 		return ; 
 	}
-	answer = ft_suurballe(farm);
+	answer = ft_suurballe(farm, &split, &pfarm);
 }

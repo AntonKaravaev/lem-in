@@ -96,8 +96,8 @@ void			ft_validation(t_map *map, t_farm *farm)
 	int		gnl_number;
 	int		fd;
 
-	//fd = open("test.txt", O_RDONLY);
-	fd = 0;
+	fd = open("olya_test.txt", O_RDONLY);
+	//fd = 0;
 	line = NULL;
 	gnl_number = 0;
 	while (1)
