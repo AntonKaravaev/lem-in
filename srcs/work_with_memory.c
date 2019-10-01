@@ -39,16 +39,16 @@ void	ft_create_ways_lines(t_farm *farm)
 	int i;
 
 	i = -1;
-	if (!(farm->wl = (int **)malloc(sizeof(int *) * 1000)))
+	if (!(farm->wl = (int **)malloc(sizeof(int *) * 10000)))
 		exit (-1);
-	while (++i < 1000)
+	while (++i < 10000)
 	{
-		if (!(farm->wl[i] = (int *)malloc(sizeof(int) * 1000)))
+		if (!(farm->wl[i] = (int *)malloc(sizeof(int) * 10000)))
 			exit (-1);
 	}
 }
 
-void	ft_fiil_in_ways_lines(t_farm *farm)
+int		ft_fiil_in_ways_lines(t_farm *farm)
 {
 	int i;
 
@@ -62,11 +62,17 @@ void	ft_fiil_in_ways_lines(t_farm *farm)
 		farm->mpw++;
 	}	
 	farm->wl[1][i] = -1;
+	if (i == 0 && farm->wl[1][0] == -1)
+	{
+		farm->bfs_flag = 0;
+		return (1);
+	}
+	return (0);
 }
 
 void	ft_create_line(t_farm *farm)
 {
-	if (!(farm->line = (int *)malloc(sizeof(int) * 1000)))
+	if (!(farm->line = (int *)malloc(sizeof(int) * 10000)))
 		exit (-1);
 }
 
@@ -79,7 +85,7 @@ void	ft_fiil_in_line(t_farm *farm)
 	farm->line[1] = -1;
 	if (farm->bfs == NULL)
 	{
-		if (!(farm->bfs = (int *)malloc(sizeof(int) * 1000)))
+		if (!(farm->bfs = (int *)malloc(sizeof(int) * 10000)))
 			exit (-1);
 	}
 	farm->bfs[0] = -1;

@@ -60,13 +60,17 @@ void add_path(t_path *good, t_farm *farm , int k)
 	ft_memset(queue, 0, k);
 	queue[k] = 1;
 	i = 0;
-	printf("\n\n!!!!!!!!!!ITERATION!!!!!!!!!!!!\n%d\n\n", k);
-	olya_write_farm(farm);     
+  
 	while (i < path.size - 1)
 	{
 		if (path.bfs[i + 1] > farm->cnt)
 			path.bfs[i + 1] -= farm->cnt;
 		room = farm->arr[path.bfs[i]];
+		if (room->pos == path.bfs[i + 1])
+		{
+			i++;
+			room = farm->arr[path.bfs[i]];
+		}
 		if (exist_link(farm->arr[path.bfs[i + 1]], path.bfs[i]) && room->paint_mark != -1) //stay only 1 case
 		{
 			queue[room->paint_mark] = 1;
@@ -75,13 +79,12 @@ void add_path(t_path *good, t_farm *farm , int k)
 		else
 		{
 			add_link(room, path.bfs[i + 1]);
-			if (farm->arr[path.bfs[i]]->pos != 1)
+			if (farm->arr[path.bfs[i]]->pos != 1 && farm->arr[path.bfs[i]]->paint_mark != -1)
 				farm->arr[path.bfs[i]]->paint_mark = k;
 		}
 		i++;
 	}
-	printf("\n");
-	olya_write_farm(farm);  
+
 	i = 0;
 	while (i < k + 1)
 	{
@@ -90,14 +93,14 @@ void add_path(t_path *good, t_farm *farm , int k)
 		{
 			new_size = 1;
 			room = farm->arr[good[i].bfs[1]];
-			//room->paint_mark = i;
+			room->paint_mark = i;
 			new_path[0] = 0;
 			new_path[new_size++] = room->pos;
 			while (room->pos != 1 && new_size < 100)
 			{
 				room = farm->arr[search_path(room)];
-				//if (room->pos != 1)
-					//room->paint_mark = i;
+				if (room->pos != 1)
+					room->paint_mark = i;
 				new_path[new_size++] = room->pos;
 			}
 			ft_fill_path(&new, new_path, new_size);

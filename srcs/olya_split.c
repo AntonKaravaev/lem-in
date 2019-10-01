@@ -9,7 +9,7 @@ void add_link(t_room *room, int new)
 	{
 		if (room->link[i] == new)
 		{
-			ft_printf("links already exist\n");
+		//	ft_printf("links already exist\n");
 			return ; 
 		}
 		i++;
@@ -34,8 +34,8 @@ void change_link(t_room *room, int change, int new)
 		}
 		i++;
 	}
-	if (link[i] == -1)
-		ft_printf("no exist changing links\n");	
+//	if (link[i] == -1)
+	//	ft_printf("no exist changing links\n");	
 }
 
 void delete_link(t_room *room, int del_link)
@@ -58,8 +58,8 @@ void delete_link(t_room *room, int del_link)
 	}
 	if (flag == 0)
 	{
-		ft_printf("no exist deleting links\n");
-		return ;
+		//ft_printf("no exist deleting links\n");
+	//	return ;
 	}
 }
 
@@ -129,7 +129,4 @@ void split_rev(t_path *path, t_farm *farm)
 		//add_link(farm->arr[path->bfs[i + 1]], room->pos);
 		i--;
 	}
-//	olya_write_dfarm(farm);
-//			printf("\n");
-//	printf("\n\nEENNNDDD\n\n");
 }

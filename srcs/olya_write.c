@@ -5,14 +5,15 @@ void write_room(t_room *room)
 {
     int i;
 
-    printf("name = %s, pos = %d color = %d line ", room->name, room->pos, room->paint_mark);
+    ft_printf("name = %s, pos = %d color = %d line ", room->name, room->pos, room->paint_mark);
     i = 0;
     while (room->link[i] != -1)
     {
-        printf("%d ", room->link[i]);
+        ft_printf("%d ", room->link[i]);
         i++;
     }
-    printf("\n");
+     ft_printf("%d ", room->link[i]);
+    ft_printf("\n");
 }
 
 

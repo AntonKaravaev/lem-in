@@ -85,7 +85,7 @@ void		ft_cant_find_way_error();
 void		ft_solution(t_map *map, t_farm *farm);
 void		ft_str_of_names(t_map *map);
 void		ft_create_ways_lines(t_farm *farm);
-void		ft_fiil_in_ways_lines(t_farm *farm);
+int			ft_fiil_in_ways_lines(t_farm *farm);
 void		ft_create_line(t_farm *farm);
 void		ft_fiil_in_line(t_farm *farm);
 void		ft_farm_initial(t_farm *farm, t_map *map);
@@ -96,7 +96,7 @@ void        ft_print_way1(t_map *map, t_farm *farm);
 void		ft_bfs(t_room **ar_r, int q_rooms, t_farm *farm);
 
 void		split_rev(t_path *path, t_farm *farm);
-t_path		*ft_suurballe(t_farm *orgn, t_farm *split, t_farm *pfarm);
+t_path		*ft_suurballe(t_farm *orgn, t_farm *split, t_farm *pfarm, int aunts);
 void		olya_write_farm(t_farm *farm);
 void		olya_write_dfarm(t_farm *farm);
 void		add_path(t_path *good, t_farm *farm , int k);
@@ -108,5 +108,8 @@ void		init_split(t_farm *orgn, t_farm *new);
 void		olya_write_path(t_path path);
 void		olya_write_good(t_path *good, int cgp);
 void		ft_clean_links(t_farm *farm);
-void		ft_dup_clear_farm(t_farm *pfarm, t_farm *orgn);
+void		ft_dup_clear_farm(t_farm *pfarm, int n);
+
+
+void		write_room(t_room *room);
 #endif
