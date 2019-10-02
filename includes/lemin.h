@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:55:33 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/02 13:41:11 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/02 14:28:02 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct	s_path
 {
 	int		size; 
 //	int		lines_of_steps;
-	int		bfs[100000];
+	int		bfs[10000];
 }				t_path;
 
 typedef struct	s_map
@@ -94,6 +94,8 @@ void		ft_print_BFS(t_farm *farm);
 void		ft_print_temp_line(t_farm *farm);
 void        ft_print_way1(t_map *map, t_farm *farm);
 void		ft_bfs(t_room **ar_r, int q_rooms, t_farm *farm);
+void		ft_check_and_right_to_wl(t_farm *farm, int number, int pos);
+void		ft_bfs_finder(t_farm *farm);
 
 void		split_rev(t_path *path, t_farm *farm);
 t_path		*ft_suurballe(t_farm *orgn, t_farm *split, t_farm *pfarm, int aunts);
@@ -112,4 +114,5 @@ void		ft_dup_clear_farm(t_farm *pfarm, int n);
 void		olya_write_name_path(t_path *save, int k, t_farm *orgn);
 
 void		write_room(t_room *room);
+
 #endif
