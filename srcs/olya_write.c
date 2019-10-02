@@ -53,6 +53,28 @@ void olya_write_path(t_path path)
     ft_printf("\n");
 }
 
+
+void olya_write_name_path(t_path *save, int k, t_farm *orgn)
+{
+	int i;
+	t_path path;
+	int j;
+
+	i = 0;
+	while (i < k)
+	{
+		path = save[i];
+		j = 0;
+		while  (j < path.size)
+		{
+			ft_printf(" %s ", orgn->arr[path.bfs[j]]->name);
+			j++;
+		}
+		ft_printf("\n");
+		i++;
+	}
+}
+
 void olya_write_farm(t_farm *farm)
 {
     int i;

@@ -167,26 +167,6 @@ int worse(t_path *old, t_path *new, int k, int aunts)
 	return (old_sum < new_sum);
 }
 
-void olya_write_name_path(t_path *save, int k, t_farm *orgn)
-{
-	int i;
-	t_path path;
-	int j;
-
-	i = 0;
-	while (i < k)
-	{
-		path = save[i];
-		j = 0;
-		while  (j < path.size)
-		{
-			ft_printf(" %s ", orgn->arr[path.bfs[j]]->name);
-			j++;
-		}
-		ft_printf("\n");
-		i++;
-	}
-}
 
 t_path *ft_suurballe(t_farm *orgn, t_farm *split, t_farm *pfarm, int aunts)
 {
@@ -202,42 +182,32 @@ t_path *ft_suurballe(t_farm *orgn, t_farm *split, t_farm *pfarm, int aunts)
 	if (!(save = ft_memalloc(sizeof(t_path) * max_p)))
 		exit (-1);
 	ft_fill_path(&path, split->bfs,  split->lwl);
-	//olya_write_farm(orgn);
 	i = 0;
 	good[0] = path;
 	add_path(good, pfarm , i);
 	ft_pathcp(save, good, 0);
-	//olya_write_good(good, 1);
 	i++;
 	while (i < max_p && i < aunts)
 	{
-		search_new_path(good, i, split);//!	
-		//if (i == 8)
-		//	olya_write_dfarm(split);
-		//ft_printf("%d startbfs\n", i);
+		search_new_path(good, i, split);//!	;
 		ft_bfs(split->arr, split->cnt, split);//!
 		if (split->bfs_flag == 0)
 		{
-			olya_write_name_path(save, i + 1, orgn);
+			orgn->cgp = i;
 			return (save);
 		}
 		ft_fill_path(&path, split->bfs,  split->lwl);
 		good[i] = path;
-		olya_write_path(path);
 		add_path(good, pfarm, i);//!
 		if (worse(save, good, i, aunts))
 		{
 			orgn->cgp = i;
-			olya_write_name_path(save, i + 1, orgn);
 			return (save);//free all
 		}
 		ft_pathcp(save, good, i);
-		//olya_write_good(good, i + 1);
-		//olya_write_name_path(save, i + 1, orgn);
 		back_to_origin(split, orgn);
 		i++;
 	}
 	orgn->cgp = i;
-	olya_write_name_path(good, i + 1, orgn);
 	return (good);
 }

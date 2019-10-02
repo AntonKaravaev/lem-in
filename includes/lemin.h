@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:55:33 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/26 23:47:36 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/02 13:41:11 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void		olya_write_path(t_path path);
 void		olya_write_good(t_path *good, int cgp);
 void		ft_clean_links(t_farm *farm);
 void		ft_dup_clear_farm(t_farm *pfarm, int n);
-
+void		olya_write_name_path(t_path *save, int k, t_farm *orgn);
 
 void		write_room(t_room *room);
 #endif
