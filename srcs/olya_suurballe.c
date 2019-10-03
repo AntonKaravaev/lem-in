@@ -163,6 +163,14 @@ int worse(t_path *old, t_path *new, int k, int aunts)
 	old_sum = old_sum % k > 0 ? (old_sum / k + 1) : old_sum / k;
 	k++;
 	new_sum = new_sum % k > 0 ? (new_sum / k + 1) : new_sum / k;
+	i = 0;
+	while (i < k)
+	{
+		if (new_sum <= new[i].size)// <= ???
+			return (1);
+		i++;
+	}
+	//
 //	ft_printf("in answer old = %d new = %d\n\n", old_sum, new_sum);
 	return (old_sum < new_sum);
 }

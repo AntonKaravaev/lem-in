@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 16:04:02 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/26 23:46:32 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/03 22:49:47 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void			ft_validation(t_map *map, t_farm *farm)
 	int		gnl_number;
 	int		fd;
 
-	//fd = open("maps/big01", O_RDONLY);
+	//fd = open("/Users/crenly-b/Desktop/Olya/maps/flowten07", O_RDONLY);
 	fd = 0;
 	line = NULL;
 	gnl_number = 0;

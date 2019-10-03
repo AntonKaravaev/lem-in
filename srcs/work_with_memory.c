@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 14:39:39 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/26 23:47:14 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/03 12:32:22 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,19 @@ void	ft_fiil_in_line(t_farm *farm)
 	{
 		if (!(farm->bfs = (int *)malloc(sizeof(int) * 10000)))
 			exit (-1);
+	}
+	i = -1;
+	while (farm->wl[1][++i] != -1)
+	{
+		if (farm->wl[1][i] == 1)
+		{
+			farm->bfs[0] = 0;
+			farm->bfs[1] = 1;
+			farm->mpw = i + 1;
+			farm->bfs_flag = 1;
+			farm->lwl = 2;
+			return ;
+		}
 	}
 	farm->bfs[0] = -1;
 	i = -1;

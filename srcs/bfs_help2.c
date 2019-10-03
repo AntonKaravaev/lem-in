@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 13:52:10 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/02 14:12:52 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/03 12:19:07 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int		ft_bfs_sup1(t_farm *farm, int *i)
 	if (ft_fiil_in_ways_lines(farm) == 1)
 		return (1);
 	ft_fiil_in_line(farm);
-	if (farm->bfs_flag == 1)
+	if (farm->bfs_flag == 1) // Был костыль но не уверен, Что он нужен!
 		return (1);
 	return (0);
 }

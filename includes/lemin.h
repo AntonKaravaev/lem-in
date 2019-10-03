@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:55:33 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/02 14:28:02 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/03 01:04:40 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ typedef struct	s_room
 
 typedef struct	s_path
 {
+	int		a_h; // ants_here
 	int		size; 
-//	int		lines_of_steps;
 	int		bfs[10000];
+	int		*p; // print_massive
 }				t_path;
 
 typedef struct	s_map
@@ -114,5 +115,6 @@ void		ft_dup_clear_farm(t_farm *pfarm, int n);
 void		olya_write_name_path(t_path *save, int k, t_farm *orgn);
 
 void		write_room(t_room *room);
+void        ft_print_result(t_path *ans, t_map *map, int cgp, int ants);
 
 #endif
