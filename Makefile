@@ -6,7 +6,7 @@
 #    By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/25 01:00:32 by crenly-b          #+#    #+#              #
-#    Updated: 2019/10/02 14:28:12 by crenly-b         ###   ########.fr        #
+#    Updated: 2019/10/04 14:00:30 by crenly-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,9 @@ HEADER = -I includes -I libft/includes
 LIB		= -L libft/ -lft
 
 LIST = main validation atoilemin roomsfinder validation_errors savelinks savelinks2 \
-	solution work_with_memory initial sup_lem_in print_way \
+	solution work_with_memory work_with_memory2 initial sup_lem_in print_way \
 	olya_suurballe olya_split olya_write olya_new_add bfs_help1 bfs_help2 bfs_help3 \
-	print1
+	print1 print1_sup1
 
 OBJS = $(addprefix objs/, $(addsuffix .o, $(LIST)))
 

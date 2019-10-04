@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:55:33 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/03 01:04:40 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/04 13:31:38 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,6 @@ void		olya_write_name_path(t_path *save, int k, t_farm *orgn);
 
 void		write_room(t_room *room);
 void        ft_print_result(t_path *ans, t_map *map, int cgp, int ants);
+void		ft_one_path_print(t_path *ans, t_map *map, int i, int nant);
 
 #endif

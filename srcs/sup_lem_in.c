@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 13:43:54 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/26 23:46:28 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/04 13:26:40 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void		ft_print_BFS(t_farm *farm)
 	ft_printf("\n");
 	ft_printf("\n");
 }
-
 
 void		ft_print_temp_line(t_farm *farm)
 {

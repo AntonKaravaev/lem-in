@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 16:04:02 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/03 22:49:47 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/04 13:23:29 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ static void		ft_save_inf(char **line, t_map *map, t_farm *farm)
 		ft_lem_error("INPUT ERROR = \0", line);
 }
 
-static void		ft_validation_sup1(t_map *map, t_farm *farm, int *gnl_param, char **line)
+static void		ft_validation_sup1(t_map *map,
+	t_farm *farm, int *gnl_param, char **line)
 {
 	if (*line == NULL)
 		ft_lem_error("INPUT ERROR(line == NULL) = \0", line);
