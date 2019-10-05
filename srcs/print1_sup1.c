@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 13:30:20 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/04 14:34:15 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/05 15:06:34 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,6 @@ void		ft_print_result(t_path *ans, t_map *map, int cgp, int ants)
 	nant = 0;
 	map->e = 0;
 	ft_preparations_for_print(ans, cgp, ants);
-	// ft_printf("ans[0].p[0] = %d\n", ans[0].p[0]);
-	// ft_printf("ans[1].p[0] = %d\n", ans[1].p[0]);
-	// ft_printf("ans[2].p[0] = %d\n", ans[2].p[0]);
-	// ft_printf("ans[3].p[0] = %d\n", ans[3].p[0]);
 	while (1)
 	{
 		i = -1;

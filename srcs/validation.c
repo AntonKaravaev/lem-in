@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 16:04:02 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/04 13:23:29 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/05 15:18:24 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int		ft_analyse_line(t_map *map, char **line)
 {
-	if (*(*line) == '#' && ft_strequ(*line, "##start\0") == 0
+	if (*(*line) == '#' && ((*line)[1] != '#') && ft_strequ(*line, "##start\0") == 0
 		&& ft_strequ(*line, "##end\0") == 0)
 		return (1);
 	else if (map->s == 0 && map->e == 0 && ft_strequ(*line, "##start\0") == 1

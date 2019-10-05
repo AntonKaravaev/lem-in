@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 12:49:11 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/04 13:24:32 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/05 15:26:41 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_lem_error(const char *err, char **line)
 {
-	ft_printf("line = %s\n", *line);
 	ft_putstr_fd(err, 2);
 	ft_putstr_fd(*line, 2);
 	ft_putchar_fd('\n', 2);

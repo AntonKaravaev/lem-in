@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 14:46:02 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/04 13:27:56 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/05 15:07:46 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,9 @@ void		ft_find_start_room(char **line, t_map *map)
 	ft_atoicoor(&(*map->str[1]));
 	ft_atoicoor(&(*map->str[2]));
 	ft_new_roominitial(map);
-	temp = ft_elem_of_rooms(map); /// Кто будет фришить temp??
+	temp = ft_elem_of_rooms(map);
 	ft_lstadd(&map->rooms, temp);
+	temp = NULL;
 }
 
 void		ft_find_curr_room(char **line, t_map *map)
