@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:06:44 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/04 14:39:17 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/05 19:17:51 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ void	ft_solution(t_map *map, t_farm *farm)
 		ft_print_way1(map, &split);
 		return ;
 	}
-	ft_printf("Hello\n");
 	answer = ft_suurballe(farm, &split, &pfarm, map->ants);
-	ft_printf("Hello\n");
 	//olya_write_name_path(answer, farm->cgp, farm);
 	ft_print_result(answer, map, farm->cgp, map->ants);
 }

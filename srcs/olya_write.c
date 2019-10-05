@@ -5,6 +5,8 @@ void write_room(t_room *room)
 {
     int i;
 
+    if (room->link[0] == -1)
+        return ;
     ft_printf("name = %s, pos = %d color = %d line ", room->name, room->pos, room->paint_mark);
     i = 0;
     while (room->link[i] != -1)

@@ -86,15 +86,15 @@ void split_rev(t_path *path, t_farm *farm)
 	t_room *room;
 	t_room *pr;
 	t_room *outing;
-	int	n_double_flag;
-
+//	int n_double_flag;
+	//olya_write_dfarm(farm);
 	i = path->size - 2;
 	while (i > 0)
 	{
 		room = farm->arr[path->bfs[i]];
 		pr = farm->arr[path->bfs[i + 1]];
 		next = farm->arr[path->bfs[i - 1]];
-		n_double_flag = no_duplicate(room->pos, farm);
+	//	n_double_flag = no_duplicate(room->pos, farm);
 		j = 0;
 		while (room->link[j] != -1)
 		{
@@ -109,20 +109,22 @@ void split_rev(t_path *path, t_farm *farm)
 			else if (room->link[j] == next->pos)//ok
 			{
 				delete_link(next, room->pos);
-				if (n_double_flag)
-				{
-					delete_link(room, next->pos);
-					add_link(room, room->pos + farm->cnt);
-					add_link(farm->arr[room->pos + farm->cnt], next->pos);
-					j--;
-				}
+				delete_link(room, next->pos);
+				add_link(room, room->pos + farm->cnt);
+				add_link(farm->arr[room->pos + farm->cnt], next->pos);
+				j--;
 				//else
 				//	add_link(room, next->pos);
 			}
-			else if (n_double_flag)//ok
+			else //ok
 			{
 				outing = farm->arr[room->link[j]];
 				change_link(outing, room->pos, room->pos + farm->cnt);
+				if (outing->paint_mark != -1)
+				{
+					//ft_printf(" room = %d, outing = %d\n", room->pos, outing->pos);
+					change_link(room, outing->pos, outing->pos + farm->cnt);
+				}
 			}
 			j++;
 		}

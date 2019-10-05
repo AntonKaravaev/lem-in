@@ -23,6 +23,7 @@ int search_path(t_room *room)
 	}
 	else if (room->link[1] != -1)
 	{
+		ft_printf("room pos = %d link0 = %d link1 = %d \n", room->pos, room->link[0], room->link[1]);
 		ft_printf("dup path\n");
 		return (-1);
 	}
@@ -60,7 +61,14 @@ void add_path(t_path *good, t_farm *farm , int k)
 	ft_memset(queue, 0, k);
 	queue[k] = 1;
 	i = 0;
-  
+	// if (k == 15)
+	// {
+	// 	//ft_printf("\nfarm \n");
+	// 	olya_write_path(path);
+	// 	olya_write_farm(farm);
+	// //	ft_printf("\nbad path\n");
+		
+	// }
 	while (i < path.size - 1)
 	{
 		if (path.bfs[i + 1] > farm->cnt)

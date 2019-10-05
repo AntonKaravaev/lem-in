@@ -14,6 +14,7 @@ void init_split(t_farm *orgn, t_farm *new)
 		if (!(new->arr[i] = ft_memalloc(sizeof(t_room))))
 			exit(-1);
 		room = new->arr[i];
+		room->paint_mark = -1;
 		if (!(room->link = malloc(sizeof(int) * orgn->cnt)))
 			exit(-1);
 		room->pos = i;
@@ -90,6 +91,8 @@ void search_new_path(t_path *good, int k, t_farm *split)
 		split_rev(&good[i], split);
 		i++;
 	}
+	//if (i == 15)
+	//	olya_write_farm(split);
 }
 
 void dup_link(int *dest_link, int *src_link)
@@ -120,7 +123,7 @@ void back_to_origin(t_farm *farm, t_farm *orgn)
 	}
 }
 
-void ft_pathcp(t_path *save, t_path *good, int k)
+void ft_path_cpy(t_path *save, t_path *good, int k)
 {
 	int i;
 	int j;
@@ -175,6 +178,17 @@ int worse(t_path *old, t_path *new, int k, int aunts)
 	return (old_sum < new_sum);
 }
 
+void cpy_paint_mark(t_farm *split, t_farm *pfarm)
+{
+	int i;
+
+	i = 0;
+	while (i < pfarm->cnt)
+	{
+		split->arr[i]->paint_mark = pfarm->arr[i]->paint_mark;		
+		i++;
+	}
+}
 
 t_path *ft_suurballe(t_farm *orgn, t_farm *split, t_farm *pfarm, int aunts)
 {
@@ -193,10 +207,12 @@ t_path *ft_suurballe(t_farm *orgn, t_farm *split, t_farm *pfarm, int aunts)
 	i = 0;
 	good[0] = path;
 	add_path(good, pfarm , i);
-	ft_pathcp(save, good, 0);
+	ft_path_cpy(save, good, 0);
 	i++;
 	while (i < max_p && i < aunts)
 	{
+		//printf("i = %d\n", i);
+		cpy_paint_mark(split, pfarm);
 		search_new_path(good, i, split);//!	;
 		ft_bfs(split->arr, split->cnt, split);//!
 		if (split->bfs_flag == 0)
@@ -207,12 +223,13 @@ t_path *ft_suurballe(t_farm *orgn, t_farm *split, t_farm *pfarm, int aunts)
 		ft_fill_path(&path, split->bfs,  split->lwl);
 		good[i] = path;
 		add_path(good, pfarm, i);//!
+		//olya_write_good(good, i + 1);
 		if (worse(save, good, i, aunts))
 		{
 			orgn->cgp = i;
 			return (save);//free all
 		}
-		ft_pathcp(save, good, i);
+		ft_path_cpy(save, good, i);
 		back_to_origin(split, orgn);
 		i++;
 	}
