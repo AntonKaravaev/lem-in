@@ -12,7 +12,7 @@
 
 #include "lemin.h"
 
-void		ft_print_BFS_potensial(t_farm *farm)
+void		ft_print_bfs_potensial(t_farm *farm)
 {
 	int		i;
 	int		j;
@@ -33,7 +33,7 @@ void		ft_print_BFS_potensial(t_farm *farm)
 	ft_printf("\n");
 }
 
-void		ft_print_BFS(t_farm *farm)
+void		ft_print_bfs(t_farm *farm)
 {
 	int		i;
 

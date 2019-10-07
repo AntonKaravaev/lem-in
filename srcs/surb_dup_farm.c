@@ -49,7 +49,7 @@ void	ft_dup_clear_farm(t_farm *pfarm, int cnt)
 	}
 }
 
-void cpy_paint_mark(t_farm *split, t_farm *pfarm)
+void cpy_paint_mark(t_farm *split, t_farm *pfarm, int *change, int num)
 {
 	int i;
 
@@ -59,6 +59,7 @@ void cpy_paint_mark(t_farm *split, t_farm *pfarm)
 		split->arr[i]->paint_mark = pfarm->arr[i]->paint_mark;		
 		i++;
 	}
+	*change = num;
 }
 
 void ft_path_cpy(t_path *save, t_path *good, int k)

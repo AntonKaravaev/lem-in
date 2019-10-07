@@ -64,8 +64,7 @@ t_path *ft_suurballe(t_farm *orgn, t_farm *split, t_farm *pfarm, int aunts)
 	i = 1;
 	while (i < max_p && i < aunts)
 	{
-		cpy_paint_mark(split, pfarm);
-		orgn->cgp = i;
+		cpy_paint_mark(split, pfarm, &(orgn->cgp), i);
 		all_split(good, i, split);
 		ft_bfs(split->arr, split->cnt, split);	
 		if (split->bfs_flag == 0)

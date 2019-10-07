@@ -19,7 +19,7 @@ LIB		= -L libft/ -lft
 LIST = main validation atoilemin roomsfinder validation_errors savelinks savelinks2 \
 	solution work_with_memory work_with_memory2 initial sup_lem_in print_way \
 	olya_suurballe olya_split olya_write olya_new_add bfs_help1 bfs_help2 bfs_help3 \
-	print1 print1_sup1 surb_sup surb_dup_farm
+	print1 print1_sup1 surb_sup surb_dup_farm sup
 
 OBJS = $(addprefix objs/, $(addsuffix .o, $(LIST)))
 
