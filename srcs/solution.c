@@ -6,11 +6,44 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:06:44 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/05 19:17:51 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/05 22:53:17 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
+
+void ft_free_split(t_farm *split)
+{
+	int i;
+	t_room *room;
+
+	ft_intstr2del(&split->wl, 10000);
+	ft_memdel((void**)&(split->bfs));
+	ft_memdel((void**)&(split->line));
+	i = 0;
+	while (i < split->cnt * 2)
+	{
+		room = split->arr[i];
+		ft_memdel((void**)&(room->link));
+		ft_memdel((void**)&(room));
+		i++;
+	}
+	ft_memdel((void**)&(split->arr));
+}
+
+void ft_free_pfarm(t_farm *pfarm)
+{
+	int i;
+
+	i = 0;
+	while (i < pfarm->cnt)
+	{
+		ft_memdel((void**)&(pfarm->arr[i]->link));
+		ft_memdel((void**)&(pfarm->arr[i]));
+		i++;
+	}
+	ft_memdel((void**)&(pfarm->arr));
+}
 
 void	ft_solution(t_map *map, t_farm *farm)
 {
@@ -36,4 +69,7 @@ void	ft_solution(t_map *map, t_farm *farm)
 	answer = ft_suurballe(farm, &split, &pfarm, map->ants);
 	//olya_write_name_path(answer, farm->cgp, farm);
 	ft_print_result(answer, map, farm->cgp, map->ants);
+	ft_free_split(&split);
+	ft_free_pfarm(&pfarm);
+	ft_memdel((void**)&(answer));
 }

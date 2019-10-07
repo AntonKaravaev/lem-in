@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 12:43:47 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/05 15:04:56 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/05 21:31:36 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	ft_mapinitial(t_map *map)
 {
-	map->temp_line = NULL;
 	map->rooms = NULL;
 	map->new_room = NULL;
-	map->edge_table = NULL;
 	map->str = NULL;
 	map->q_rooms = 0;
 	map->ants = 0;

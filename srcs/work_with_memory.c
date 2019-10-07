@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 14:39:39 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/05 16:24:42 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/05 22:14:29 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,6 @@ void		ft_fiil_in_line(t_farm *farm)
 			return ;
 		}
 	}
-	i = -1;
-	while (++i < 10000)
-	{
-		farm->bfs[i] = -1;
-	}
-	//farm->bfs[0] = -1;
 	i = -1;
 	while (farm->arr[0]->link[++i] != -1)
 		farm->line[i + 1] = farm->arr[0]->link[i];

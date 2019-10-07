@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:55:33 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/05 15:04:45 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/05 21:58:48 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ typedef struct	s_map
 {
 	t_list	*rooms;
 	t_room	*new_room;
-	int		**edge_table;
-	int		*temp_line;
 	char	**str;
 	int		q_rooms; // quantity of rooms
 	int		ants;
@@ -102,18 +100,24 @@ void		split_rev(t_path *path, t_farm *farm);
 t_path		*ft_suurballe(t_farm *orgn, t_farm *split, t_farm *pfarm, int aunts);
 void		olya_write_farm(t_farm *farm);
 void		olya_write_dfarm(t_farm *farm);
-void		add_path(t_path *good, t_farm *farm , int k);
+void		add_path(t_path *good, t_farm *farm , int k, t_farm *split);
 void		add_link(t_room *room, int new);
 void		change_link(t_room *room, int change, int new);
 void		delete_link(t_room *room, int del_link);
 void		ft_fill_path(t_path *path, int *bfs, int size);
-void		init_split(t_farm *orgn, t_farm *new);
 void		olya_write_path(t_path path);
 void		olya_write_good(t_path *good, int cgp);
 void		ft_clean_links(t_farm *farm);
 void		ft_dup_clear_farm(t_farm *pfarm, int n);
 void		olya_write_name_path(t_path *save, int k, t_farm *orgn);
-
+void		ft_path_cpy(t_path *save, t_path *good, int k);
+void		cpy_paint_mark(t_farm *split, t_farm *pfarm);
+void		init_split(t_farm *orgn, t_farm *new);
+void		ft_fill_path(t_path *path, int *bfs, int size);
+void		ft_clean_links(t_farm *farm);
+void		all_split(t_path *good, int k, t_farm *split);
+void		dup_link(int *dest_link, int *src_link);
+void		back_to_origin(t_farm *farm, t_farm *orgn);
 void		write_room(t_room *room);
 void        ft_print_result(t_path *ans, t_map *map, int cgp, int ants);
 void		ft_one_path_print(t_path *ans, t_map *map, int i, int nant);

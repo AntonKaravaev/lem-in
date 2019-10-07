@@ -46,40 +46,20 @@ int search_num_path(t_room *room, int path_numb, t_farm *farm)
 	return (-1);
 }
 
-void add_path(t_path *good, t_farm *farm , int k)
+void intersection(t_farm *farm, char *queue, t_path path, int k)
 {
-	t_path  path;
 	int     i;
-	char	queue[100000];
-	
 	t_room	*room;
-	int		new_path[100000];
-	t_path	new;
-	int		new_size;
-	
-	path = good[k];
-	ft_memset(queue, 0, k);
-	queue[k] = 1;
+
 	i = 0;
-	// if (k == 15)
-	// {
-	// 	//ft_printf("\nfarm \n");
-	// 	olya_write_path(path);
-	// 	olya_write_farm(farm);
-	// //	ft_printf("\nbad path\n");
-		
-	// }
 	while (i < path.size - 1)
 	{
 		if (path.bfs[i + 1] > farm->cnt)
 			path.bfs[i + 1] -= farm->cnt;
 		room = farm->arr[path.bfs[i]];
 		if (room->pos == path.bfs[i + 1])
-		{
-			i++;
-			room = farm->arr[path.bfs[i]];
-		}
-		if (exist_link(farm->arr[path.bfs[i + 1]], path.bfs[i]) && room->paint_mark != -1) //stay only 1 case
+			room = farm->arr[path.bfs[++i]];
+		if (exist_link(farm->arr[path.bfs[i + 1]], path.bfs[i]) && room->paint_mark != -1)
 		{
 			queue[room->paint_mark] = 1;
 			delete_link(farm->arr[path.bfs[i + 1]], path.bfs[i]);
@@ -92,28 +72,52 @@ void add_path(t_path *good, t_farm *farm , int k)
 		}
 		i++;
 	}
+}
 
+t_path painting_path(t_farm *farm, t_path *good, t_farm *split, int i)
+{
+	t_room	*room;
+	int		new_path[100000];
+	t_path	new;
+	int		new_size;
+
+	room = farm->arr[0];
+	new_size = 1;
+	room = farm->arr[good[i].bfs[1]];
+	room->paint_mark = i;
+	split->arr[good[i].bfs[1]]->paint_mark = i;
+	new_path[0] = 0;
+	new_path[new_size++] = room->pos;
+	while (room->pos != 1 && new_size < 100)
+	{
+		room = farm->arr[search_path(room)];
+		if (room->pos != 1)
+		{
+			room->paint_mark = i;
+			split->arr[good[i].bfs[1]]->paint_mark = i;
+		}
+		new_path[new_size++] = room->pos;
+	}
+	ft_fill_path(&new, new_path, new_size);
+	return(new);
+}
+
+void add_path(t_path *good, t_farm *farm , int k, t_farm *split)
+{
+	
+	t_path  path;
+	char	queue[100000];
+	int		i;
+
+	path = good[k];
+	ft_memset(queue, 0, k);
+	queue[k] = 1;
+	intersection(farm, queue, path, k);
 	i = 0;
 	while (i < k + 1)
 	{
-		room = farm->arr[0];
 		if (queue[i] == 1)
-		{
-			new_size = 1;
-			room = farm->arr[good[i].bfs[1]];
-			room->paint_mark = i;
-			new_path[0] = 0;
-			new_path[new_size++] = room->pos;
-			while (room->pos != 1 && new_size < 100)
-			{
-				room = farm->arr[search_path(room)];
-				if (room->pos != 1)
-					room->paint_mark = i;
-				new_path[new_size++] = room->pos;
-			}
-			ft_fill_path(&new, new_path, new_size);
-			good[i] = new;
-		}
+			good[i] = painting_path(farm, good, split, i);
 		i++;
 	}
 }

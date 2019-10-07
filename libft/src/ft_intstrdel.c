@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 16:23:37 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/12 21:51:06 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/05 22:22:06 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void		ft_intstr2del(int ***as, int quantity)
 	int i;
 
 	i = 0;
-	if (*as && **as != NULL)
+	if (as != NULL && *as != NULL)
 	{
 		while (i < quantity && (*as)[i] != NULL)
 		{
