@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:55:33 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/05 21:58:48 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/07 23:20:14 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct s_farm
 
 
 int			main(int argc, char *argv[]);       
-void		ft_validation(t_map *map, t_farm *farm);
+char 		*ft_validation(t_map *map, t_farm *farm);
 int			ft_atoilemin(char *s);
 void		ft_atoicoor(char *s);
 void		ft_find_start_room(char **line, t_map *map);

@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 16:04:02 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/05 22:16:07 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/07 23:31:05 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,16 +91,17 @@ static void		ft_validation_sup1(t_map *map,
 		ft_save_inf(line, map, farm);
 }
 
-void			ft_validation(t_map *map, t_farm *farm)
+char 			*ft_validation(t_map *map, t_farm *farm)
 {
 	char	*line;
 	int		gnl_number;
 	int		fd;
-
+	char	*text;
 	//fd = open("/Users/bharmund/Desktop/Olya/maps/bigsup01", O_RDONLY);
 	fd = 0;
 	line = NULL;
 	gnl_number = 0;
+	text = (char *)(ft_memalloc(10000000));
 	while (1)
 	{
 		if ((gnl_number = get_next_line(fd, &line)) < 0)
@@ -109,6 +110,9 @@ void			ft_validation(t_map *map, t_farm *farm)
 			break ;
 		else
 			ft_validation_sup1(map, farm, &gnl_number, &line);
+		ft_strcat(text, line);
+		ft_strcat(text, "\n");
 		ft_strdel(&line);
 	}
+	return (text);
 }
