@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 13:53:48 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/07 23:28:36 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/08 12:45:52 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_dellist(t_list *list)
 	t_room	*temp;
 	t_list	*next;
 
-	while(list != NULL)
+	while (list != NULL)
 	{
 		temp = (t_room	*)(list->content);
 		ft_strdel(&(temp->name));
@@ -31,8 +31,8 @@ static void	ft_dellist(t_list *list)
 
 static void	ft_free_whats_needs(t_map *map, t_farm *farm, char **text)
 {
-	int i;
-	t_room *room;
+	int		i;
+	t_room	*room;
 
 	ft_str2del(&map->str);
 	ft_strdel(text);
@@ -60,13 +60,13 @@ int			main(int argc, char *argv[])
 	ft_mapinitial(&map);
 	ft_farm_initial(&farm, &map);
 	text = ft_validation(&map, &farm);
-	if (map.ants != 0 && map.s != 0 && map.e != 0 && map.q_rooms != 0
-		&& map.sf != 0 && map.ef != 0 && map.lf != 0)
+	if (map.ants != 0 && map.s != 0 && map.e != 0
+		&& map.q_rooms != 0 && map.lf != 0)
 	{
 		ft_putstr(text);
 		ft_putchar('\n');
 		ft_solution(&map, &farm);
-	}	
+	}
 	else
 		ft_input_error();
 	ft_free_whats_needs(&map, &farm, &text);

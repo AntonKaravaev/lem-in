@@ -18,12 +18,11 @@ static void	ft_create_array_rooms(t_farm *farm, t_map *map)
 	int		i;
 	int		j;
 
-	i = 0;
-	j = map->q_rooms - 1;
 	temp = map->rooms;
 	if (!(farm->arr =
 		(t_room **)malloc(sizeof(t_room *) * map->q_rooms)))
 		exit(-1);
+	j = map->q_rooms - 1;
 	while (temp != NULL)
 	{
 		farm->arr[j] = (t_room *)temp->content;

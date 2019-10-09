@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   surb_dup_farm.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/08 12:23:08 by crenly-b          #+#    #+#             */
+/*   Updated: 2019/10/08 12:24:21 by crenly-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
-void init_split(t_farm *orgn, t_farm *new)
+void	init_split(t_farm *orgn, t_farm *new)
 {
-	int     i;
-	t_room  *room;
+	int		i;
+	t_room	*room;
 
 	if (!(new->arr = malloc(sizeof(t_room*) * orgn->cnt * 2)))
 		exit(-1);
@@ -28,8 +40,8 @@ void init_split(t_farm *orgn, t_farm *new)
 
 void	ft_dup_clear_farm(t_farm *pfarm, int cnt)
 {
-	int i;
-	t_room *room;
+	int		i;
+	t_room	*room;
 
 	if (!(pfarm->arr = malloc(sizeof(t_room*) * cnt)))
 		exit(-1);
@@ -49,20 +61,20 @@ void	ft_dup_clear_farm(t_farm *pfarm, int cnt)
 	}
 }
 
-void cpy_paint_mark(t_farm *split, t_farm *pfarm, int *change, int num)
+void	cpy_paint_mark(t_farm *split, t_farm *pfarm, int *change, int num)
 {
 	int i;
 
 	i = 0;
 	while (i < pfarm->cnt)
 	{
-		split->arr[i]->paint_mark = pfarm->arr[i]->paint_mark;		
+		split->arr[i]->paint_mark = pfarm->arr[i]->paint_mark;
 		i++;
 	}
 	*change = num;
 }
 
-void ft_path_cpy(t_path *save, t_path *good, int k)
+void	ft_path_cpy(t_path *save, t_path *good, int k)
 {
 	int i;
 	int j;
@@ -76,7 +88,7 @@ void ft_path_cpy(t_path *save, t_path *good, int k)
 		{
 			save[i].bfs[j] = good[i].bfs[j];
 			j++;
-		}	
+		}
 		i++;
 	}
 }

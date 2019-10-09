@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   olya_split.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/08 12:35:56 by crenly-b          #+#    #+#             */
+/*   Updated: 2019/10/08 12:37:19 by crenly-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
-void change_link(t_room *room, int change, int new)
+void	change_link(t_room *room, int change, int new)
 {
-	int i;
-	int *link;
+	int	i;
+	int	*link;
 
 	link = room->link;
 	i = 0;
@@ -18,11 +30,11 @@ void change_link(t_room *room, int change, int new)
 	}
 }
 
-void delete_link(t_room *room, int del_link)
+void	delete_link(t_room *room, int del_link)
 {
-	int i;
-	int *link;
-	int flag;
+	int	i;
+	int	*link;
+	int	flag;
 
 	i = 0;
 	flag = 0;
@@ -32,13 +44,13 @@ void delete_link(t_room *room, int del_link)
 		if (link[i] == del_link || flag)
 		{
 			flag = 1;
-			link[i]	= link[i + 1];
+			link[i] = link[i + 1];
 		}
 		i++;
 	}
 }
 
-int no_duplicate(int room_pos, t_farm *farm)
+int		no_duplicate(int room_pos, t_farm *farm)
 {
 	int *link;
 
@@ -50,10 +62,10 @@ int no_duplicate(int room_pos, t_farm *farm)
 	return (0);
 }
 
-void split_room(t_room *next, t_room *pr, t_room *room, t_farm *farm)
+void	split_room(t_room *next, t_room *pr, t_room *room, t_farm *farm)
 {
-	int j;
-	t_room *outing;
+	int		j;
+	t_room	*outing;
 
 	j = 0;
 	while (room->link[j] != -1)
@@ -66,7 +78,7 @@ void split_room(t_room *next, t_room *pr, t_room *room, t_farm *farm)
 		else if (room->link[j] == next->pos)
 		{
 			delete_link(next, room->pos);
-			change_link(room,  next->pos, room->pos + farm->cnt);
+			change_link(room, next->pos, room->pos + farm->cnt);
 			add_link(farm->arr[room->pos + farm->cnt], next->pos);
 		}
 		else
@@ -79,7 +91,7 @@ void split_room(t_room *next, t_room *pr, t_room *room, t_farm *farm)
 	}
 }
 
-void split_rev(t_path *path, t_farm *farm)
+void	split_rev(t_path *path, t_farm *farm)
 {
 	int		i;
 	t_room	*next;

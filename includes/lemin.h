@@ -96,7 +96,6 @@ void			ft_bfs_finder(t_farm *farm);
 void			split_rev(t_path *path, t_farm *farm);
 t_path			*ft_suurballe(t_farm *orgn, t_farm *split,
 									t_farm *pfarm, int aunts);
-void			olya_write_farm(t_farm *farm);
 void			olya_write_dfarm(t_farm *farm);
 void			add_path(t_path *good, t_farm *farm, int k, t_farm *split);
 void			add_link(t_room *room, int new);
@@ -123,5 +122,10 @@ void			ft_one_path_print(t_path *ans, t_map *map, int i, int nant);
 void			add_link(t_room *room, int new);
 void			ft_mapinitial(t_map *map);
 int				search_path(t_room *room);
+void			ft_find_end_room(char **line, t_map *map);
+void			ft_lstaddlbo(t_list **alst, t_list *new);
+void			ft_lstaddend(t_list **alst, t_list *new);
+void			ft_new_roominitial(t_map *map);
+t_list			*ft_elem_of_rooms(t_map *map);
 
 #endif

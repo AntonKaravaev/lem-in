@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 14:39:39 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/05 22:14:29 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/08 15:22:07 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void		ft_create_ways_lines(t_farm *farm)
 {
 	int i;
 
-	i = -1;
-	if (!(farm->wl = (int **)malloc(sizeof(int *) * 10000)))
+	if (!(farm->wl = (int **)ft_memalloc(sizeof(int *) * 10000)))
 		exit(-1);
+	i = -1;
 	while (++i < 10000)
 	{
-		if (!(farm->wl[i] = (int *)malloc(sizeof(int) * 10000)))
+		if (!(farm->wl[i] = (int *)ft_memalloc(sizeof(int) * 10000)))
 			exit(-1);
 	}
 }

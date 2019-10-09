@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 16:23:37 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/10/05 22:22:06 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/08 13:27:13 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static int		ft_intstrdel_return(int **as)
 		return (1);
 	}
 	return (1);
-} 
+}
 
-void		ft_intstr2del(int ***as, int quantity)
+void			ft_intstr2del(int ***as, int quantity)
 {
 	int i;
 

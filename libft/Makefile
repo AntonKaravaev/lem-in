@@ -6,13 +6,13 @@
 #    By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/09 15:14:49 by crenly-b          #+#    #+#              #
-#    Updated: 2019/10/05 19:47:08 by crenly-b         ###   ########.fr        #
+#    Updated: 2019/10/08 15:28:59 by crenly-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 HEADERS = $(addprefix -I , includes/)
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 
 LIST_LIBFT = find_ch ft_atoi ft_bzero ft_isalnum ft_isalpha ft_isascii \
 	ft_isdigit ft_isprint ft_itoa ft_memalloc ft_memccpy ft_memdel \
@@ -56,6 +56,7 @@ obj:
 
 clean:
 	@rm -rf ./obj/
+	@echo 🛀 🛀 🛀
 
 fclean: clean
 	@rm -f $(NAME)

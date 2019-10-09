@@ -23,7 +23,7 @@ void		ft_new_roominitial(t_map *map)
 	new->y = ft_atoi(map->str[2]);
 	map->max_x = (new->x >= map->max_x) ? new->x : map->max_x;
 	map->max_y = (new->y >= map->max_y) ? new->y : map->max_y;
-	new->pos = ++map->q_rooms - 1;
+	new->pos = ++map->q_rooms - map->s - map->e + 1;
 	new->paint_mark = -1;
 	map->new_room = new;
 	new = NULL;
@@ -75,8 +75,6 @@ void		ft_find_start_room(char **line, t_map *map)
 {
 	t_list *temp;
 
-	if (map->sf == 0)
-		map->sf = 1;
 	map->str = ft_strsplit(*line, ' ');
 	if (!map->str[0] || !map->str[1] || !map->str[2] || map->str[3] != NULL
 		|| map->str[0][0] == 'L' || (ft_strchr(&(*map->str[0]), 45) != NULL))
@@ -84,15 +82,15 @@ void		ft_find_start_room(char **line, t_map *map)
 	ft_atoicoor(&(*map->str[1]));
 	ft_atoicoor(&(*map->str[2]));
 	ft_new_roominitial(map);
+	map->new_room->pos = 0;
 	temp = ft_elem_of_rooms(map);
-	ft_lstadd(&map->rooms, temp);
+	ft_lstaddend(&map->rooms, temp);
+	map->sf = 0;
 	temp = NULL;
 }
 
 void		ft_find_curr_room(char **line, t_map *map)
 {
-	if (map->ef == 0)
-		map->ef = 1;
 	map->str = ft_strsplit(*line, ' ');
 	if (!map->str[0] || !map->str[1] || !map->str[2] || map->str[3] != NULL
 		|| map->str[0][0] == 'L' || (ft_strchr(&(*map->str[0]), 45) != NULL))

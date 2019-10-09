@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 21:28:26 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/09/04 12:44:15 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/10/08 13:26:20 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		ft_putstrp(char *str, t_ran ran, int *j)
 	}
 }
 
-void	ft_bzerop(void *s, size_t size)
+void		ft_bzerop(void *s, size_t size)
 {
 	size_t	i;
 	char	*str;
@@ -46,7 +46,7 @@ void	ft_bzerop(void *s, size_t size)
 	}
 }
 
-int		ft_flagsup(char *str, t_ran *ran, t_spec *s)
+int			ft_flagsup(char *str, t_ran *ran, t_spec *s)
 {
 	if (str[ran->i] == 'j')
 	{
